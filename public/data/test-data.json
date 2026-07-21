@@ -1,0 +1,2525 @@
+{
+  "meta": {
+    "title": "행위 정의 판별 테스트",
+    "version": "2026-07-20-draft-1",
+    "passThreshold": 0.85,
+    "actionCount": 54,
+    "questionCount": 216,
+    "questionsPerAction": 4
+  },
+  "actions": [
+    {
+      "id": "A01",
+      "sourceOrder": 1,
+      "name": "확인",
+      "definition": "틀림없이 그러한가를 알아보거나 인정함.",
+      "subjects": [
+        "사실"
+      ],
+      "keyTerms": [
+        "인지",
+        "인정"
+      ],
+      "mode": "-",
+      "agency": "능동적",
+      "note": "",
+      "criteriaStatus": "사용가능",
+      "improvementPoint": "여러 상황 사례에 적용할 수 있는 최소 판단 기준이 있습니다."
+    },
+    {
+      "id": "A02",
+      "sourceOrder": 2,
+      "name": "검사",
+      "definition": "사실이나 일의 상태 또는 물질의 구성 성분 따위를 조사하여 옳고 그름과 낫고 못함을 판단하는 일",
+      "subjects": [
+        "사실",
+        "상태"
+      ],
+      "keyTerms": [
+        "조사",
+        "판단"
+      ],
+      "mode": "물리적",
+      "agency": "능동적",
+      "note": "",
+      "criteriaStatus": "사용가능",
+      "improvementPoint": "여러 상황 사례에 적용할 수 있는 최소 판단 기준이 있습니다."
+    },
+    {
+      "id": "A03",
+      "sourceOrder": 3,
+      "name": "점검",
+      "definition": "낱낱이 검사함",
+      "subjects": [
+        "검사대항"
+      ],
+      "keyTerms": [
+        "검사"
+      ],
+      "mode": "개념적",
+      "agency": "능동적",
+      "note": "",
+      "criteriaStatus": "보완필요",
+      "improvementPoint": "대상1의 '검사대항'을 '검사대상'으로 고치고 검사와의 종료조건 차이를 명시하세요."
+    },
+    {
+      "id": "A04",
+      "sourceOrder": 4,
+      "name": "판단",
+      "definition": "사물을 인식하여 논리나 기준 등에 따라 판정을 내림",
+      "subjects": [
+        "사물"
+      ],
+      "keyTerms": [
+        "논리&기준",
+        "인식"
+      ],
+      "mode": "개념적",
+      "agency": "능동적",
+      "note": "",
+      "criteriaStatus": "보완권고",
+      "improvementPoint": "'논리&기준'을 두 요소로 분리하고 판정 결과의 형식을 명시하면 재현성이 높아집니다."
+    },
+    {
+      "id": "A05",
+      "sourceOrder": 5,
+      "name": "인식",
+      "definition": "사물을 분별하고 판단하여 앎",
+      "subjects": [
+        "사물"
+      ],
+      "keyTerms": [
+        "분별",
+        "판단"
+      ],
+      "mode": "물리적",
+      "agency": "능동적",
+      "note": "물리적 실체",
+      "criteriaStatus": "보완필요",
+      "improvementPoint": "인지와의 차이를 물리적 대상 식별 여부만으로 나누기에는 예외가 많아 포함·제외 예시가 필요합니다."
+    },
+    {
+      "id": "A06",
+      "sourceOrder": 6,
+      "name": "인지",
+      "definition": "어떤 사실을 인정하여 앎.",
+      "subjects": [
+        "사실"
+      ],
+      "keyTerms": [
+        "인정",
+        "앎"
+      ],
+      "mode": "개념적",
+      "agency": "수동적",
+      "note": "물리적 실체의 개념실체",
+      "criteriaStatus": "보완필요",
+      "improvementPoint": "인식·확인과 겹치므로 '이미 성립한 사실을 인정해 앎'이라는 경계를 운영 규칙으로 명시하세요."
+    },
+    {
+      "id": "A07",
+      "sourceOrder": 7,
+      "name": "접수",
+      "definition": "신청이나 신고 따위를 구두나 문서로 받음",
+      "subjects": [
+        "신청",
+        "신고",
+        "문서"
+      ],
+      "keyTerms": [
+        "받음"
+      ],
+      "mode": "물리적",
+      "agency": "능동적",
+      "note": "",
+      "criteriaStatus": "사용가능",
+      "improvementPoint": "여러 상황 사례에 적용할 수 있는 최소 판단 기준이 있습니다."
+    },
+    {
+      "id": "A08",
+      "sourceOrder": 8,
+      "name": "승인",
+      "definition": "어떤 사실을 마땅하다고 받아들임",
+      "subjects": [
+        "사실",
+        "상태"
+      ],
+      "keyTerms": [],
+      "mode": "개념적",
+      "agency": "능동적",
+      "note": "",
+      "criteriaStatus": "보완필요",
+      "improvementPoint": "핵심 분류가 비어 있고 '마땅함'의 판단 근거가 없어 허용 조건을 추가해야 합니다."
+    },
+    {
+      "id": "A09",
+      "sourceOrder": 9,
+      "name": "분별",
+      "definition": "서로 다른 일이나 사물을 구별하여 가름.",
+      "subjects": [
+        "일",
+        "사물"
+      ],
+      "keyTerms": [
+        "구별",
+        "가름"
+      ],
+      "mode": "개념적",
+      "agency": "능동적",
+      "note": "",
+      "criteriaStatus": "사용가능",
+      "improvementPoint": "여러 상황 사례에 적용할 수 있는 최소 판단 기준이 있습니다."
+    },
+    {
+      "id": "A10",
+      "sourceOrder": 10,
+      "name": "생성",
+      "definition": "사물이 생겨남. 또는 사물이 생겨 이루어지게 함.",
+      "subjects": [
+        "사물"
+      ],
+      "keyTerms": [
+        "생김",
+        "이루어짐"
+      ],
+      "mode": "물리적/개념적",
+      "agency": "능동적/수동적",
+      "note": "",
+      "criteriaStatus": "사용가능",
+      "improvementPoint": "여러 상황 사례에 적용할 수 있는 최소 판단 기준이 있습니다."
+    },
+    {
+      "id": "A11",
+      "sourceOrder": 11,
+      "name": "수집",
+      "definition": "취미나 연구를 위하여 여러 가지 물건이나 재료를 찾아 모음",
+      "subjects": [
+        "취미",
+        "연구",
+        "물건"
+      ],
+      "keyTerms": [
+        "찾음",
+        "모음"
+      ],
+      "mode": "물리적",
+      "agency": "능동적",
+      "note": "",
+      "criteriaStatus": "사용가능",
+      "improvementPoint": "여러 상황 사례에 적용할 수 있는 최소 판단 기준이 있습니다."
+    },
+    {
+      "id": "A12",
+      "sourceOrder": 12,
+      "name": "발굴",
+      "definition": "세상에 널리 알려지지 않거나 뛰어난 것을 찾아 밝혀냄",
+      "subjects": [
+        "세상에 널리 알려지지 않은것",
+        "뛰어난것"
+      ],
+      "keyTerms": [
+        "찾음",
+        "밝힘"
+      ],
+      "mode": "개념적",
+      "agency": "능동적",
+      "note": "",
+      "criteriaStatus": "사용가능",
+      "improvementPoint": "여러 상황 사례에 적용할 수 있는 최소 판단 기준이 있습니다."
+    },
+    {
+      "id": "A13",
+      "sourceOrder": 13,
+      "name": "입력",
+      "definition": "문자나 숫자를 컴퓨터가 기억하게 하는 일",
+      "subjects": [
+        "문자",
+        "숫자"
+      ],
+      "keyTerms": [
+        "기억"
+      ],
+      "mode": "물리적",
+      "agency": "능동적",
+      "note": "",
+      "criteriaStatus": "보완권고",
+      "improvementPoint": "물리적 분류의 의미와 저장과 구별되는 완료 시점을 명시하세요."
+    },
+    {
+      "id": "A14",
+      "sourceOrder": 14,
+      "name": "등록",
+      "definition": "일정한 자격 조건을 갖추기 위하여 단체나 학교 따위에 문서를 올림",
+      "subjects": [
+        "자격",
+        "조건"
+      ],
+      "keyTerms": [
+        "올림"
+      ],
+      "mode": "개념적",
+      "agency": "능동적",
+      "note": "",
+      "criteriaStatus": "보완권고",
+      "improvementPoint": "학교·단체 문서 제출로 한정할지 시스템 명부 등재까지 포함할지 범위를 정하세요."
+    },
+    {
+      "id": "A15",
+      "sourceOrder": 15,
+      "name": "검토",
+      "definition": "어떤 사실이나 내용을 분석하여 따짐",
+      "subjects": [
+        "사실",
+        "내용"
+      ],
+      "keyTerms": [
+        "분석",
+        "따짐"
+      ],
+      "mode": "개념적",
+      "agency": "능동적",
+      "note": "",
+      "criteriaStatus": "사용가능",
+      "improvementPoint": "여러 상황 사례에 적용할 수 있는 최소 판단 기준이 있습니다."
+    },
+    {
+      "id": "A16",
+      "sourceOrder": 16,
+      "name": "반려",
+      "definition": "주로 윗사람이나 상급 기관에 제출한 문서를 처리하지 않고 되돌려줌",
+      "subjects": [
+        "문서"
+      ],
+      "keyTerms": [
+        "되돌려줌"
+      ],
+      "mode": "물리적/개념적",
+      "agency": "능동적",
+      "note": "",
+      "criteriaStatus": "사용가능",
+      "improvementPoint": "여러 상황 사례에 적용할 수 있는 최소 판단 기준이 있습니다."
+    },
+    {
+      "id": "A17",
+      "sourceOrder": 17,
+      "name": "보류",
+      "definition": "어떤 일을 당장 처리하지 아니하고 나중으로 미루어 둠",
+      "subjects": [
+        "처리"
+      ],
+      "keyTerms": [
+        "미루어둠"
+      ],
+      "mode": "개념적",
+      "agency": "능동적",
+      "note": "",
+      "criteriaStatus": "사용가능",
+      "improvementPoint": "여러 상황 사례에 적용할 수 있는 최소 판단 기준이 있습니다."
+    },
+    {
+      "id": "A18",
+      "sourceOrder": 18,
+      "name": "분류",
+      "definition": "종류에 따라서 가름",
+      "subjects": [],
+      "keyTerms": [
+        "종류",
+        "가름"
+      ],
+      "mode": "개념적",
+      "agency": "능동적",
+      "note": "",
+      "criteriaStatus": "사용가능",
+      "improvementPoint": "여러 상황 사례에 적용할 수 있는 최소 판단 기준이 있습니다."
+    },
+    {
+      "id": "A19",
+      "sourceOrder": 19,
+      "name": "정규화",
+      "definition": "개체에 존재하는 함수적 종속 관계를 이용하는 데이터베이스 구조를 안정화시키는 작업",
+      "subjects": [
+        "개체",
+        "종속관계",
+        "데이터베이스"
+      ],
+      "keyTerms": [
+        "안정화"
+      ],
+      "mode": "개념적",
+      "agency": "능동적",
+      "note": "",
+      "criteriaStatus": "사용가능",
+      "improvementPoint": "여러 상황 사례에 적용할 수 있는 최소 판단 기준이 있습니다."
+    },
+    {
+      "id": "A20",
+      "sourceOrder": 20,
+      "name": "분리",
+      "definition": "서로 나뉘어 떨어짐. 또는 그렇게 되게 함",
+      "subjects": [],
+      "keyTerms": [
+        "나뉘어 떨어짐"
+      ],
+      "mode": "물리적/개념적",
+      "agency": "능동적/수동적",
+      "note": "",
+      "criteriaStatus": "보완권고",
+      "improvementPoint": "대상 열이 비어 있으므로 물리·개념 대상과 분류와의 구분 예시를 보강하세요."
+    },
+    {
+      "id": "A21",
+      "sourceOrder": 21,
+      "name": "병합",
+      "definition": "둘 이상의 기구나 단체, 나라 따위가 하나로 합쳐짐. 또는 그렇게 만듦",
+      "subjects": [
+        "기구",
+        "단체",
+        "나라"
+      ],
+      "keyTerms": [
+        "하나로 합쳐짐"
+      ],
+      "mode": "개념적",
+      "agency": "능동적/수동적",
+      "note": "",
+      "criteriaStatus": "사용가능",
+      "improvementPoint": "여러 상황 사례에 적용할 수 있는 최소 판단 기준이 있습니다."
+    },
+    {
+      "id": "A22",
+      "sourceOrder": 22,
+      "name": "처리",
+      "definition": "사무나 사건 따위를 절차에 따라 정리하여 치르거나 마무리를 지음",
+      "subjects": [
+        "사무",
+        "사건"
+      ],
+      "keyTerms": [
+        "절차",
+        "마무리"
+      ],
+      "mode": "개념적",
+      "agency": "능동적",
+      "note": "",
+      "criteriaStatus": "사용가능",
+      "improvementPoint": "여러 상황 사례에 적용할 수 있는 최소 판단 기준이 있습니다."
+    },
+    {
+      "id": "A23",
+      "sourceOrder": 23,
+      "name": "산정",
+      "definition": "셈하여 정함",
+      "subjects": [
+        "셈"
+      ],
+      "keyTerms": [
+        "정함"
+      ],
+      "mode": "개념적",
+      "agency": "능동적",
+      "note": "",
+      "criteriaStatus": "사용가능",
+      "improvementPoint": "여러 상황 사례에 적용할 수 있는 최소 판단 기준이 있습니다."
+    },
+    {
+      "id": "A24",
+      "sourceOrder": 24,
+      "name": "수정",
+      "definition": "글이나 글자의 잘못된 점을 고침",
+      "subjects": [
+        "글",
+        "글자",
+        "잘못된 점"
+      ],
+      "keyTerms": [
+        "고침"
+      ],
+      "mode": "물리적/개념적",
+      "agency": "능동적",
+      "note": "",
+      "criteriaStatus": "사용가능",
+      "improvementPoint": "여러 상황 사례에 적용할 수 있는 최소 판단 기준이 있습니다."
+    },
+    {
+      "id": "A25",
+      "sourceOrder": 25,
+      "name": "갱신",
+      "definition": "기존의 내용을 변동된 사실에 따라 변경ㆍ추가ㆍ삭제하는 일",
+      "subjects": [
+        "기존 내용",
+        "변동된 사실"
+      ],
+      "keyTerms": [
+        "변경",
+        "추가",
+        "삭제"
+      ],
+      "mode": "개념적",
+      "agency": "능동적",
+      "note": "",
+      "criteriaStatus": "사용가능",
+      "improvementPoint": "여러 상황 사례에 적용할 수 있는 최소 판단 기준이 있습니다."
+    },
+    {
+      "id": "A26",
+      "sourceOrder": 26,
+      "name": "변경",
+      "definition": "다르게 바꾸어 새롭게 고침",
+      "subjects": [],
+      "keyTerms": [
+        "다르게",
+        "새롭게",
+        "고침"
+      ],
+      "mode": "개념적",
+      "agency": "능동적",
+      "note": "",
+      "criteriaStatus": "보완권고",
+      "improvementPoint": "대상 열이 비어 있고 갱신·수정과 겹치므로 변경 사유가 없는 일반 변화라는 경계를 명시하세요."
+    },
+    {
+      "id": "A27",
+      "sourceOrder": 27,
+      "name": "전달",
+      "definition": "지시, 명령, 물품 따위를 다른 사람이나 기관에 전하여 이르게 함",
+      "subjects": [
+        "지시",
+        "명령",
+        "물품"
+      ],
+      "keyTerms": [
+        "전함",
+        "이르게 함"
+      ],
+      "mode": "물리적/개념적",
+      "agency": "능동적",
+      "note": "",
+      "criteriaStatus": "사용가능",
+      "improvementPoint": "여러 상황 사례에 적용할 수 있는 최소 판단 기준이 있습니다."
+    },
+    {
+      "id": "A28",
+      "sourceOrder": 28,
+      "name": "발송",
+      "definition": "물건, 편지, 서류 따위를 우편이나 운송 수단을 이용하여 보냄.",
+      "subjects": [
+        "물건",
+        "편지",
+        "서류"
+      ],
+      "keyTerms": [
+        "우편",
+        "운송수단",
+        "보냄"
+      ],
+      "mode": "물리적",
+      "agency": "능동적",
+      "note": "",
+      "criteriaStatus": "사용가능",
+      "improvementPoint": "여러 상황 사례에 적용할 수 있는 최소 판단 기준이 있습니다."
+    },
+    {
+      "id": "A29",
+      "sourceOrder": 29,
+      "name": "제출",
+      "definition": "문안(文案)이나 의견, 법안(法案) 따위를 냄",
+      "subjects": [
+        "문안",
+        "의견",
+        "법안"
+      ],
+      "keyTerms": [
+        "냄"
+      ],
+      "mode": "개념적",
+      "agency": "능동적",
+      "note": "",
+      "criteriaStatus": "사용가능",
+      "improvementPoint": "여러 상황 사례에 적용할 수 있는 최소 판단 기준이 있습니다."
+    },
+    {
+      "id": "A30",
+      "sourceOrder": 30,
+      "name": "저장",
+      "definition": "물건이나 재화 따위를 모아서 간수함",
+      "subjects": [
+        "물건",
+        "재화"
+      ],
+      "keyTerms": [
+        "모아서",
+        "간수함"
+      ],
+      "mode": "물리적",
+      "agency": "능동적",
+      "note": "매체에 저장 (EVENT)",
+      "criteriaStatus": "보완필요",
+      "improvementPoint": "사전 정의는 물건·재화의 간수, 비고는 매체 기록 사건이라 서로 다른 기준입니다. 하나로 통일하세요."
+    },
+    {
+      "id": "A31",
+      "sourceOrder": 31,
+      "name": "보관",
+      "definition": "물건을 맡아서 간직하고 관리함",
+      "subjects": [
+        "물건"
+      ],
+      "keyTerms": [
+        "맡음",
+        "간직",
+        "관리"
+      ],
+      "mode": "물리적",
+      "agency": "능동적",
+      "note": "일정 기간동안, 처음의 상태가 유지되도록 하는것",
+      "criteriaStatus": "사용가능",
+      "improvementPoint": "여러 상황 사례에 적용할 수 있는 최소 판단 기준이 있습니다."
+    },
+    {
+      "id": "A32",
+      "sourceOrder": 32,
+      "name": "폐기",
+      "definition": "못 쓰게 된 것을 버림",
+      "subjects": [
+        "못 쓰게 된 것"
+      ],
+      "keyTerms": [
+        "버림"
+      ],
+      "mode": "물리적/개념적",
+      "agency": "능동적",
+      "note": "",
+      "criteriaStatus": "사용가능",
+      "improvementPoint": "여러 상황 사례에 적용할 수 있는 최소 판단 기준이 있습니다."
+    },
+    {
+      "id": "A33",
+      "sourceOrder": 33,
+      "name": "미사용처리",
+      "definition": "-",
+      "subjects": [],
+      "keyTerms": [],
+      "mode": "",
+      "agency": "",
+      "note": "",
+      "criteriaStatus": "정의없음",
+      "improvementPoint": "정의가 '-'이므로 포함 조건, 제외 조건, 폐기·비활성화와의 차이를 먼저 정의해야 합니다."
+    },
+    {
+      "id": "A34",
+      "sourceOrder": 34,
+      "name": "관리",
+      "definition": "어떤 일의 사무를 맡아 처리함",
+      "subjects": [
+        "일",
+        "사무"
+      ],
+      "keyTerms": [
+        "맡음",
+        "처리"
+      ],
+      "mode": "개념적",
+      "agency": "능동적",
+      "note": "",
+      "criteriaStatus": "보완권고",
+      "improvementPoint": "처리와 겹치므로 지속적 책임 범위인지 단건 절차 종료인지 시간축 기준을 추가하세요."
+    },
+    {
+      "id": "A35",
+      "sourceOrder": 35,
+      "name": "연결",
+      "definition": "사물과 사물을 서로 잇거나 현상과 현상이 관계를 맺게 함",
+      "subjects": [
+        "사물",
+        "현상"
+      ],
+      "keyTerms": [
+        "이음",
+        "관계맺음"
+      ],
+      "mode": "물리적/개념적",
+      "agency": "능동적",
+      "note": "",
+      "criteriaStatus": "사용가능",
+      "improvementPoint": "여러 상황 사례에 적용할 수 있는 최소 판단 기준이 있습니다."
+    },
+    {
+      "id": "A36",
+      "sourceOrder": 36,
+      "name": "배정",
+      "definition": "몫을 나누어 정함",
+      "subjects": [
+        "몫"
+      ],
+      "keyTerms": [
+        "나눔",
+        "정함"
+      ],
+      "mode": "개념적",
+      "agency": "능동적",
+      "note": "",
+      "criteriaStatus": "사용가능",
+      "improvementPoint": "여러 상황 사례에 적용할 수 있는 최소 판단 기준이 있습니다."
+    },
+    {
+      "id": "A37",
+      "sourceOrder": 37,
+      "name": "수립",
+      "definition": "국가나 정부, 제도, 계획 따위를 이룩하여 세움",
+      "subjects": [
+        "국가",
+        "정부",
+        "제도"
+      ],
+      "keyTerms": [
+        "이룩",
+        "세움"
+      ],
+      "mode": "개념적",
+      "agency": "능동적",
+      "note": "",
+      "criteriaStatus": "사용가능",
+      "improvementPoint": "여러 상황 사례에 적용할 수 있는 최소 판단 기준이 있습니다."
+    },
+    {
+      "id": "A38",
+      "sourceOrder": 38,
+      "name": "선정",
+      "definition": "여럿 가운데서 어떤 것을 뽑아 정함",
+      "subjects": [
+        "여럿"
+      ],
+      "keyTerms": [
+        "뽑음",
+        "정함"
+      ],
+      "mode": "개념적",
+      "agency": "능동적",
+      "note": "",
+      "criteriaStatus": "사용가능",
+      "improvementPoint": "여러 상황 사례에 적용할 수 있는 최소 판단 기준이 있습니다."
+    },
+    {
+      "id": "A39",
+      "sourceOrder": 39,
+      "name": "채취",
+      "definition": "연구나 조사에 필요한 것을 찾거나 받아서 얻음",
+      "subjects": [
+        "연구",
+        "조사"
+      ],
+      "keyTerms": [
+        "찾음",
+        "받음",
+        "얻음"
+      ],
+      "mode": "물리적",
+      "agency": "능동적",
+      "note": "",
+      "criteriaStatus": "사용가능",
+      "improvementPoint": "여러 상황 사례에 적용할 수 있는 최소 판단 기준이 있습니다."
+    },
+    {
+      "id": "A40",
+      "sourceOrder": 40,
+      "name": "측정",
+      "definition": "양, 무게, 길이, 거리, 정도 따위를 잼",
+      "subjects": [
+        "양",
+        "무게",
+        "길이"
+      ],
+      "keyTerms": [
+        "잼"
+      ],
+      "mode": "물리적",
+      "agency": "능동적",
+      "note": "",
+      "criteriaStatus": "보완필요",
+      "improvementPoint": "정도 측정은 개념적일 수 있는데 물리적으로만 분류되어 있습니다. 분류 기준을 조정하세요."
+    },
+    {
+      "id": "A41",
+      "sourceOrder": 41,
+      "name": "시험",
+      "definition": "사물의 성질이나 기능을 실지로 증험(證驗)하여 보는 일",
+      "subjects": [
+        "사물",
+        "성질",
+        "기능"
+      ],
+      "keyTerms": [
+        "실지",
+        "증험"
+      ],
+      "mode": "물리적/개념적",
+      "agency": "능동적",
+      "note": "",
+      "criteriaStatus": "보완권고",
+      "improvementPoint": "검사·증험과 구분되도록 실제 작동·적용이라는 수행 조건과 결과 산출물을 명시하세요."
+    },
+    {
+      "id": "A42",
+      "sourceOrder": 42,
+      "name": "분석",
+      "definition": "얽혀 있거나 복잡한 것을 풀어서 개별적인 요소나 성질로 나눔",
+      "subjects": [
+        "얽혀있는것",
+        "복잡한것"
+      ],
+      "keyTerms": [
+        "개별적 요소",
+        "개별적 성질",
+        "나눔"
+      ],
+      "mode": "개념적",
+      "agency": "능동적",
+      "note": "",
+      "criteriaStatus": "사용가능",
+      "improvementPoint": "여러 상황 사례에 적용할 수 있는 최소 판단 기준이 있습니다."
+    },
+    {
+      "id": "A43",
+      "sourceOrder": 43,
+      "name": "교정",
+      "definition": "틀어지거나 잘못된 것을 바로잡음",
+      "subjects": [
+        "틀어진것",
+        "잘못된것"
+      ],
+      "keyTerms": [
+        "바로잡음"
+      ],
+      "mode": "물리적/개념적",
+      "agency": "능동적",
+      "note": "",
+      "criteriaStatus": "사용가능",
+      "improvementPoint": "여러 상황 사례에 적용할 수 있는 최소 판단 기준이 있습니다."
+    },
+    {
+      "id": "A44",
+      "sourceOrder": 44,
+      "name": "검수",
+      "definition": "물건의 규격, 수량, 품질 따위를 검사한 후 물건을 받음",
+      "subjects": [
+        "물건의 규격",
+        "물건의 수량",
+        "물건의 품질"
+      ],
+      "keyTerms": [
+        "검사",
+        "받음"
+      ],
+      "mode": "물리적",
+      "agency": "능동적",
+      "note": "",
+      "criteriaStatus": "사용가능",
+      "improvementPoint": "여러 상황 사례에 적용할 수 있는 최소 판단 기준이 있습니다."
+    },
+    {
+      "id": "A45",
+      "sourceOrder": 45,
+      "name": "평가",
+      "definition": "물건값을 헤아려 매김",
+      "subjects": [
+        "물건",
+        "가격"
+      ],
+      "keyTerms": [
+        "헤아림",
+        "매김"
+      ],
+      "mode": "개념적",
+      "agency": "능동적",
+      "note": "",
+      "criteriaStatus": "보완필요",
+      "improvementPoint": "현재 정의는 가격 매김에만 한정됩니다. 일반 성과평가까지 포함할지 명확히 정하세요."
+    },
+    {
+      "id": "A46",
+      "sourceOrder": 46,
+      "name": "통보",
+      "definition": "통지하여 보고함",
+      "subjects": [
+        "통지"
+      ],
+      "keyTerms": [
+        "보고"
+      ],
+      "mode": "개념적",
+      "agency": "능동적",
+      "note": "",
+      "criteriaStatus": "보완필요",
+      "improvementPoint": "'통지하여 보고함'은 통지·보고와 중첩됩니다. 수신자, 방향, 완료 조건을 분리해 정의하세요."
+    },
+    {
+      "id": "A47",
+      "sourceOrder": 47,
+      "name": "배포",
+      "definition": "신문이나 책자 따위를 널리 나누어 줌",
+      "subjects": [
+        "신문",
+        "책자"
+      ],
+      "keyTerms": [
+        "널리",
+        "나눔"
+      ],
+      "mode": "물리적",
+      "agency": "능동적",
+      "note": "",
+      "criteriaStatus": "사용가능",
+      "improvementPoint": "여러 상황 사례에 적용할 수 있는 최소 판단 기준이 있습니다."
+    },
+    {
+      "id": "A48",
+      "sourceOrder": 48,
+      "name": "이관",
+      "definition": "관할을 옮김",
+      "subjects": [
+        "관할"
+      ],
+      "keyTerms": [
+        "옮김"
+      ],
+      "mode": "개념적",
+      "agency": "능동적",
+      "note": "",
+      "criteriaStatus": "사용가능",
+      "improvementPoint": "여러 상황 사례에 적용할 수 있는 최소 판단 기준이 있습니다."
+    },
+    {
+      "id": "A49",
+      "sourceOrder": 49,
+      "name": "증험",
+      "definition": "시험해 본 효험",
+      "subjects": [
+        "시험"
+      ],
+      "keyTerms": [
+        "효험"
+      ],
+      "mode": "개념적",
+      "agency": "능동적",
+      "note": "",
+      "criteriaStatus": "보완필요",
+      "improvementPoint": "시험 과정인지 시험 후 드러난 효과인지 정의가 불명확합니다. 시험·효험과의 경계를 재정의하세요."
+    },
+    {
+      "id": "A50",
+      "sourceOrder": 50,
+      "name": "효험",
+      "definition": "어떤 일이나 작용의 좋은 결과",
+      "subjects": [
+        "일",
+        "작용"
+      ],
+      "keyTerms": [
+        "좋은 결과"
+      ],
+      "mode": "개념적",
+      "agency": "수동적",
+      "note": "",
+      "criteriaStatus": "보완필요",
+      "improvementPoint": "행동이 아니라 좋은 결과 상태에 가까워 행동명 체계에 둘지 검토가 필요합니다."
+    },
+    {
+      "id": "A51",
+      "sourceOrder": 51,
+      "name": "통지",
+      "definition": "기별을 보내어 알게 함",
+      "subjects": [
+        "기별"
+      ],
+      "keyTerms": [
+        "보냄",
+        "알게함"
+      ],
+      "mode": "개념적",
+      "agency": "능동적",
+      "note": "",
+      "criteriaStatus": "사용가능",
+      "improvementPoint": "여러 상황 사례에 적용할 수 있는 최소 판단 기준이 있습니다."
+    },
+    {
+      "id": "A52",
+      "sourceOrder": 52,
+      "name": "보고",
+      "definition": "일에 관한 내용이나 결과를 말이나 글로 알림",
+      "subjects": [
+        "일",
+        "내용",
+        "결과"
+      ],
+      "keyTerms": [
+        "말로 알림",
+        "글로 알림"
+      ],
+      "mode": "개념적",
+      "agency": "능동적",
+      "note": "",
+      "criteriaStatus": "사용가능",
+      "improvementPoint": "여러 상황 사례에 적용할 수 있는 최소 판단 기준이 있습니다."
+    },
+    {
+      "id": "A53",
+      "sourceOrder": 53,
+      "name": "신청",
+      "definition": "단체나 기관에 어떠한 일이나 물건을 알려 청구함",
+      "subjects": [
+        "단체",
+        "기관",
+        "일"
+      ],
+      "keyTerms": [
+        "알림",
+        "청구함"
+      ],
+      "mode": "개념적",
+      "agency": "능동적",
+      "note": "",
+      "criteriaStatus": "사용가능",
+      "improvementPoint": "여러 상황 사례에 적용할 수 있는 최소 판단 기준이 있습니다."
+    },
+    {
+      "id": "A54",
+      "sourceOrder": 54,
+      "name": "청구",
+      "definition": "남에게 돈이나 물건 따위를 달라고 요구함",
+      "subjects": [
+        "남",
+        "돈",
+        "물건"
+      ],
+      "keyTerms": [
+        "요구"
+      ],
+      "mode": "개념적",
+      "agency": "능동적",
+      "note": "",
+      "criteriaStatus": "사용가능",
+      "improvementPoint": "여러 상황 사례에 적용할 수 있는 최소 판단 기준이 있습니다."
+    }
+  ],
+  "specialChoices": [
+    {
+      "id": "UNDECIDABLE",
+      "name": "판정불가",
+      "definition": "현재 제시된 행위 가운데 이 상황을 충분히 표현하는 항목을 선택하기 어렵습니다."
+    }
+  ],
+  "questions": [
+    {
+      "id": "T001",
+      "scenario": "전화로 들어온 서비스 신청 내용을 받아 기록했다.",
+      "answerActionId": "A07",
+      "sourceActionId": "A07",
+      "rationale": "신청·신고를 구두나 문서로 받는 수신 행위이다."
+    },
+    {
+      "id": "T002",
+      "scenario": "고객이 말한 전화번호를 컴퓨터가 기억하도록 화면에 타이핑했다.",
+      "answerActionId": "A13",
+      "sourceActionId": "A13",
+      "rationale": "문자나 숫자를 컴퓨터가 기억하도록 넣는 순간의 행위이다."
+    },
+    {
+      "id": "T003",
+      "scenario": "결정을 지금 내리지 않고 추가 자료가 올 때까지 뒤로 미뤘다.",
+      "answerActionId": "A17",
+      "sourceActionId": "A17",
+      "rationale": "되돌려주지 않고 현재 처리를 멈춰 나중으로 미루는 행위이다."
+    },
+    {
+      "id": "T004",
+      "scenario": "검사를 위해 환자에게서 혈액 표본을 받아 얻었다.",
+      "answerActionId": "A39",
+      "sourceActionId": "A39",
+      "rationale": "연구·조사에 필요한 것을 대상이나 현장에서 받아 얻는다."
+    },
+    {
+      "id": "T005",
+      "scenario": "납품된 부품의 규격·수량·품질을 검사한 뒤 물건을 인수했다.",
+      "answerActionId": "A44",
+      "sourceActionId": "A44",
+      "rationale": "물건의 규격·수량·품질을 검사한 후 그 물건을 받는 데까지 포함한다."
+    },
+    {
+      "id": "T006",
+      "scenario": "고객 이탈 원인을 가격, 품질, 서비스 요소로 나누어 살폈다.",
+      "answerActionId": "A42",
+      "sourceActionId": "A42",
+      "rationale": "복잡하게 얽힌 대상을 개별 요소나 성질로 풀어 나눈다."
+    },
+    {
+      "id": "T007",
+      "scenario": "담당 부서가 요청을 실제로 받았는지 문의해 사실을 알아보았다.",
+      "answerActionId": "A01",
+      "sourceActionId": "A01",
+      "rationale": "사실의 참·일치 여부를 알아보거나 인정하는 것이 핵심이며, 체계적 조사와 적부 판정은 없다."
+    },
+    {
+      "id": "T008",
+      "scenario": "지원자 명단에서 주목받지 못했던 뛰어난 인재를 찾아냈다.",
+      "answerActionId": "A12",
+      "sourceActionId": "A12",
+      "rationale": "널리 알려지지 않았거나 뛰어난 것을 찾아 밝혀내는 행위이다."
+    },
+    {
+      "id": "T009",
+      "scenario": "근무시간과 단가를 계산해 지급액을 정했다.",
+      "answerActionId": "A23",
+      "sourceActionId": "A23",
+      "rationale": "계산하거나 셈한 결과로 값을 정한다."
+    },
+    {
+      "id": "T010",
+      "scenario": "두 부서를 하나의 조직으로 합쳤다.",
+      "answerActionId": "A21",
+      "sourceActionId": "A21",
+      "rationale": "둘 이상의 대상을 하나로 합치는 행위 또는 상태 변화이다."
+    },
+    {
+      "id": "T011",
+      "scenario": "두 장비를 케이블로 이어 서로 신호를 주고받게 했다.",
+      "answerActionId": "A35",
+      "sourceActionId": "A35",
+      "rationale": "둘 이상의 사물·현상을 잇거나 관계를 맺게 하되 하나로 합치지는 않는다."
+    },
+    {
+      "id": "T012",
+      "scenario": "작업자가 소리의 차이를 분별해 어느 기계에서 나는 경고음인지 알아차렸다.",
+      "answerActionId": "A05",
+      "sourceActionId": "A05",
+      "rationale": "사물을 분별하고 판단해 무엇인지 아는 과정이다."
+    },
+    {
+      "id": "T013",
+      "scenario": "계약 원본을 5년 동안 처음 상태가 유지되도록 문서고에서 관리했다.",
+      "answerActionId": "A31",
+      "sourceActionId": "A31",
+      "rationale": "맡은 물건을 일정 기간 상태가 유지되도록 간직·관리한다."
+    },
+    {
+      "id": "T014",
+      "scenario": "법무팀이 계약 조항의 의미와 위험을 분석해 문제 여부를 따졌다.",
+      "answerActionId": "A15",
+      "sourceActionId": "A15",
+      "rationale": "사실이나 내용을 분석한 뒤 논점·타당성을 따지는 과정이다."
+    },
+    {
+      "id": "T015",
+      "scenario": "조사 내용을 회의에서 말로 책임자에게 알렸다.",
+      "answerActionId": "A52",
+      "sourceActionId": "A52",
+      "rationale": "일의 내용이나 결과를 말이나 글로 책임자·관계자에게 알린다."
+    },
+    {
+      "id": "T016",
+      "scenario": "조직의 새 제도와 실행 계획을 이룩해 세웠다.",
+      "answerActionId": "A37",
+      "sourceActionId": "A37",
+      "rationale": "국가·정부·조직의 제도나 계획을 이룩해 세운다."
+    },
+    {
+      "id": "T017",
+      "scenario": "증거의 신뢰성과 관련 기준을 고려해 위반 여부를 판정했다.",
+      "answerActionId": "A04",
+      "sourceActionId": "A04",
+      "rationale": "논리나 명시적 기준에 따라 판정을 내리는 의사결정이다."
+    },
+    {
+      "id": "T018",
+      "scenario": "협회 가입 조건을 충족한 업체가 회원 명부에 오르기 위한 서류를 냈다.",
+      "answerActionId": "A14",
+      "sourceActionId": "A14",
+      "rationale": "자격 조건을 갖추기 위해 단체·학교 등에 문서를 올리는 행위이다."
+    },
+    {
+      "id": "T019",
+      "scenario": "보안 안내문을 조직 전체 구성원에게 널리 나눠 주었다.",
+      "answerActionId": "A47",
+      "sourceActionId": "A47",
+      "rationale": "신문·책자·문서 등을 여러 대상에게 널리 나누어 준다."
+    },
+    {
+      "id": "T020",
+      "scenario": "심사 결과 기준에 맞는 휴가 요청을 받아들여 사용을 허용했다.",
+      "answerActionId": "A08",
+      "sourceActionId": "A08",
+      "rationale": "어떤 사실이나 요청을 마땅하다고 받아들여 허용하는 결정이다."
+    },
+    {
+      "id": "T021",
+      "scenario": "사진 파일을 디지털 매체에 기록해 나중에 불러올 수 있게 했다.",
+      "answerActionId": "A30",
+      "sourceActionId": "A30",
+      "rationale": "비고의 운영 기준에 따라 매체에 기록하는 순간의 사건으로 본다."
+    },
+    {
+      "id": "T022",
+      "scenario": "해당 업무의 관리 권한과 관할을 새 부서로 넘겼다.",
+      "answerActionId": "A48",
+      "sourceActionId": "A48",
+      "rationale": "물건 자체보다 관할·권한·책임 범위를 다른 주체로 옮긴다."
+    },
+    {
+      "id": "T023",
+      "scenario": "기능을 비활성 상태로 바꾸었지만 삭제하거나 버리지는 않았다.",
+      "answerActionId": "UNDECIDABLE",
+      "sourceActionId": "A33",
+      "rationale": "원본의 정의가 '-'로 비어 있어 포함·제외 조건을 판정할 수 없다."
+    },
+    {
+      "id": "T024",
+      "scenario": "안내문을 읽고 자신에게 새 의무가 생겼다는 사실을 인정해 알게 됐다.",
+      "answerActionId": "A06",
+      "sourceActionId": "A06",
+      "rationale": "어떤 사실을 인정해 알게 되는 상태 변화가 핵심이다."
+    },
+    {
+      "id": "T025",
+      "scenario": "사용할 수 없게 된 장비를 버렸다.",
+      "answerActionId": "A32",
+      "sourceActionId": "A32",
+      "rationale": "못 쓰게 되었거나 더는 사용할 수 없는 대상을 버린다."
+    },
+    {
+      "id": "T026",
+      "scenario": "담당자가 받은 열쇠를 다음 근무자에게 직접 건네주었다.",
+      "answerActionId": "A27",
+      "sourceActionId": "A27",
+      "rationale": "지시·명령·물품 등을 특정 사람이나 기관에 이르게 한다."
+    },
+    {
+      "id": "T027",
+      "scenario": "매뉴얼에 잘못 쓰인 제품명을 올바른 명칭으로 고쳤다.",
+      "answerActionId": "A24",
+      "sourceActionId": "A24",
+      "rationale": "글·글자의 잘못된 부분을 고치는 데 초점이 있다."
+    },
+    {
+      "id": "T028",
+      "scenario": "기존 운영시간을 다른 시간대로 바꾸어 새롭게 정했다.",
+      "answerActionId": "A26",
+      "sourceActionId": "A26",
+      "rationale": "오류 수정이나 최신화라는 추가 조건 없이 상태를 다르게 바꾼다."
+    },
+    {
+      "id": "T029",
+      "scenario": "고객의 집으로 안내문을 우편에 부쳐 보냈다.",
+      "answerActionId": "A28",
+      "sourceActionId": "A28",
+      "rationale": "우편이나 운송 수단을 이용해 물건·편지·서류를 보낸다."
+    },
+    {
+      "id": "T030",
+      "scenario": "연구팀이 검토를 받기 위해 최종 결과 문서를 기관에 냈다.",
+      "answerActionId": "A29",
+      "sourceActionId": "A29",
+      "rationale": "문안·의견·법안 등을 상대 기관이나 절차에 정식으로 낸다."
+    },
+    {
+      "id": "T031",
+      "scenario": "담당자가 결정 내용을 관계자에게 알리고 그 사실을 상급자에게 보고했다.",
+      "answerActionId": "A46",
+      "sourceActionId": "A46",
+      "rationale": "현재 정의에 따르면 상대에게 통지한 뒤 그 사실을 보고하는 결합 행위이다."
+    },
+    {
+      "id": "T032",
+      "scenario": "중고 장비의 상태를 고려해 적정한 값을 매겼다.",
+      "answerActionId": "A45",
+      "sourceActionId": "A45",
+      "rationale": "현재 정의에서는 물건의 가치를 헤아려 가격을 매기는 행위로 한정된다."
+    },
+    {
+      "id": "T033",
+      "scenario": "처분 내용을 당사자에게 문서로 보내 알렸다.",
+      "answerActionId": "A51",
+      "sourceActionId": "A51",
+      "rationale": "기별이나 정보를 상대에게 보내 알게 하는 단방향 알림이다."
+    },
+    {
+      "id": "T034",
+      "scenario": "연구를 위해 여러 지역의 표본과 자료를 찾아 한곳에 모았다.",
+      "answerActionId": "A11",
+      "sourceActionId": "A11",
+      "rationale": "취미나 연구를 위해 여러 물건·재료를 찾아 모은다."
+    },
+    {
+      "id": "T035",
+      "scenario": "민원을 내용에 따라 요금, 장애, 해지 유형으로 나누었다.",
+      "answerActionId": "A18",
+      "sourceActionId": "A18",
+      "rationale": "종류나 범주 기준에 따라 여러 집합으로 가르는 행위이다."
+    },
+    {
+      "id": "T036",
+      "scenario": "정비 작업 뒤 연료 소모가 줄어드는 좋은 효과가 나타났다.",
+      "answerActionId": "A50",
+      "sourceActionId": "A50",
+      "rationale": "어떤 일이나 작용이 낳은 좋은 결과 자체를 뜻한다."
+    },
+    {
+      "id": "T037",
+      "scenario": "설계 도구에서 기존에 없던 도면 객체를 새로 만들었다.",
+      "answerActionId": "A10",
+      "sourceActionId": "A10",
+      "rationale": "전에 없던 사물이나 개념이 생기거나 생기게 하는 것이다."
+    },
+    {
+      "id": "T038",
+      "scenario": "환불 요청을 절차에 따라 확인하고 지급까지 끝냈다.",
+      "answerActionId": "A22",
+      "sourceActionId": "A22",
+      "rationale": "사무나 사건을 절차에 따라 정리해 끝내는 종결성이 핵심이다."
+    },
+    {
+      "id": "T039",
+      "scenario": "혈액의 성분을 조사하고 정상 범위인지 판정했다.",
+      "answerActionId": "A02",
+      "sourceActionId": "A02",
+      "rationale": "사실·상태·성분을 조사한 뒤 옳고 그름 또는 우열을 판정한다."
+    },
+    {
+      "id": "T040",
+      "scenario": "휘어진 축을 원래의 곧은 상태로 바로잡았다.",
+      "answerActionId": "A43",
+      "sourceActionId": "A43",
+      "rationale": "틀어지거나 잘못된 대상을 올바른 상태로 바로잡는다."
+    },
+    {
+      "id": "T041",
+      "scenario": "여러 후보 가운데 기준에 가장 맞는 공급업체 하나를 뽑아 정했다.",
+      "answerActionId": "A38",
+      "sourceActionId": "A38",
+      "rationale": "여럿 가운데 하나 또는 일부를 뽑아 정한다."
+    },
+    {
+      "id": "T042",
+      "scenario": "혼합 폐기물에서 금속과 플라스틱을 떼어 서로 떨어뜨렸다.",
+      "answerActionId": "A20",
+      "sourceActionId": "A20",
+      "rationale": "하나로 붙거나 섞인 대상을 서로 나뉘어 떨어지게 한다."
+    },
+    {
+      "id": "T043",
+      "scenario": "담당자가 시설 운영 사무를 맡아 점검 일정과 예산을 계속 챙겼다.",
+      "answerActionId": "A34",
+      "sourceActionId": "A34",
+      "rationale": "어떤 일의 사무를 맡아 지속적으로 다루는 책임 범위가 핵심이다."
+    },
+    {
+      "id": "T044",
+      "scenario": "설문 척도로 만족 정도를 수치로 재었다.",
+      "answerActionId": "A40",
+      "sourceActionId": "A40",
+      "rationale": "양·무게·길이·거리·정도 등을 도구나 척도로 잰다."
+    },
+    {
+      "id": "T045",
+      "scenario": "소유자가 상대방에게 맡긴 물건을 돌려달라고 요구했다.",
+      "answerActionId": "A54",
+      "sourceActionId": "A54",
+      "rationale": "상대방에게 돈이나 물건을 달라고 직접 요구한다."
+    },
+    {
+      "id": "T046",
+      "scenario": "여러 값이 한 칸에 들어간 데이터를 원자 값으로 나누고 키 종속성을 바로잡았다.",
+      "answerActionId": "A19",
+      "sourceActionId": "A19",
+      "rationale": "함수적 종속 관계를 이용해 데이터베이스 구조를 안정화한다."
+    },
+    {
+      "id": "T047",
+      "scenario": "운행 전 차량의 타이어·등화·브레이크 항목을 체크리스트로 낱낱이 살폈다.",
+      "answerActionId": "A03",
+      "sourceActionId": "A03",
+      "rationale": "대상을 낱낱이 살피는 완전성·누락 방지 성격이 핵심이다."
+    },
+    {
+      "id": "T048",
+      "scenario": "신규 업무의 몫을 팀원별로 나누어 담당을 정했다.",
+      "answerActionId": "A36",
+      "sourceActionId": "A36",
+      "rationale": "전체 몫을 여러 주체에게 나누어 각각의 몫을 정한다."
+    },
+    {
+      "id": "T049",
+      "scenario": "변경된 주소에 맞춰 기존 고객정보를 바꾸고 새 연락처를 추가했다.",
+      "answerActionId": "A25",
+      "sourceActionId": "A25",
+      "rationale": "변동된 사실을 반영해 기존 내용을 변경·추가·삭제한다."
+    },
+    {
+      "id": "T050",
+      "scenario": "주민이 기관에 시설 이용을 허락해 달라고 요청했다.",
+      "answerActionId": "A53",
+      "sourceActionId": "A53",
+      "rationale": "단체·기관에 일이나 물건을 알려 제공·처리를 청구한다."
+    },
+    {
+      "id": "T051",
+      "scenario": "재료의 내열 성질을 실제 환경에서 증험해 보았다.",
+      "answerActionId": "A41",
+      "sourceActionId": "A41",
+      "rationale": "사물의 성질이나 기능을 실제로 작동·적용해 증험해 본다."
+    },
+    {
+      "id": "T052",
+      "scenario": "새 교육법을 적용해 본 결과 학습 효과가 나타났다는 실증을 얻었다.",
+      "answerActionId": "A49",
+      "sourceActionId": "A49",
+      "rationale": "현재 정의에서는 시험해 본 효험, 즉 시험을 통해 드러난 효과에 초점이 있다."
+    },
+    {
+      "id": "T053",
+      "scenario": "정책 질문과 단순 문의를 내용의 차이로 구별해 가려냈다.",
+      "answerActionId": "A09",
+      "sourceActionId": "A09",
+      "rationale": "서로 다른 대상의 차이를 구별해 가르는 행위이다."
+    },
+    {
+      "id": "T054",
+      "scenario": "결재권자는 보완이 필요한 문서를 처리하지 않은 채 작성 부서로 되돌렸다.",
+      "answerActionId": "A16",
+      "sourceActionId": "A16",
+      "rationale": "제출 문서를 처리하지 않고 제출자 쪽으로 되돌려주는 것이 핵심이다."
+    },
+    {
+      "id": "T055",
+      "scenario": "두 수도관을 이음 장치로 이어 물이 흐르게 했다.",
+      "answerActionId": "A35",
+      "sourceActionId": "A35",
+      "rationale": "둘 이상의 사물·현상을 잇거나 관계를 맺게 하되 하나로 합치지는 않는다."
+    },
+    {
+      "id": "T056",
+      "scenario": "회사가 맡은 보증서를 만료일까지 훼손되지 않게 문서고에 두고 관리했다.",
+      "answerActionId": "A31",
+      "sourceActionId": "A31",
+      "rationale": "맡은 물건을 일정 기간 상태가 유지되도록 간직·관리한다."
+    },
+    {
+      "id": "T057",
+      "scenario": "입고 물품을 살피고 이상이 없음을 확인한 후 창고에서 받아들였다.",
+      "answerActionId": "A44",
+      "sourceActionId": "A44",
+      "rationale": "물건의 규격·수량·품질을 검사한 후 그 물건을 받는 데까지 포함한다."
+    },
+    {
+      "id": "T058",
+      "scenario": "책임자가 예산 사용 요청을 마땅하다고 인정하고 진행을 허용했다.",
+      "answerActionId": "A08",
+      "sourceActionId": "A08",
+      "rationale": "어떤 사실이나 요청을 마땅하다고 받아들여 허용하는 결정이다."
+    },
+    {
+      "id": "T059",
+      "scenario": "계정은 남겨 두되 앞으로 쓰지 않는 상태로 표시했다.",
+      "answerActionId": "UNDECIDABLE",
+      "sourceActionId": "A33",
+      "rationale": "원본의 정의가 '-'로 비어 있어 포함·제외 조건을 판정할 수 없다."
+    },
+    {
+      "id": "T060",
+      "scenario": "접수된 사고의 조사, 보상, 종결 절차를 모두 마쳤다.",
+      "answerActionId": "A22",
+      "sourceActionId": "A22",
+      "rationale": "사무나 사건을 절차에 따라 정리해 끝내는 종결성이 핵심이다."
+    },
+    {
+      "id": "T061",
+      "scenario": "측정값이 계속 치우친 저울을 표준값에 맞도록 바로잡았다.",
+      "answerActionId": "A43",
+      "sourceActionId": "A43",
+      "rationale": "틀어지거나 잘못된 대상을 올바른 상태로 바로잡는다."
+    },
+    {
+      "id": "T062",
+      "scenario": "문서를 보존기간 기준으로 세 유형에 나누었다.",
+      "answerActionId": "A18",
+      "sourceActionId": "A18",
+      "rationale": "종류나 범주 기준에 따라 여러 집합으로 가르는 행위이다."
+    },
+    {
+      "id": "T063",
+      "scenario": "담당자가 물품을 다른 기관 책임자에게 직접 건네 이르게 했다.",
+      "answerActionId": "A27",
+      "sourceActionId": "A27",
+      "rationale": "지시·명령·물품 등을 특정 사람이나 기관에 이르게 한다."
+    },
+    {
+      "id": "T064",
+      "scenario": "장비 개선안을 시험하여 효험이 나타났다는 실증 결과를 얻었다.",
+      "answerActionId": "A49",
+      "sourceActionId": "A49",
+      "rationale": "현재 정의에서는 시험해 본 효험, 즉 시험을 통해 드러난 효과에 초점이 있다."
+    },
+    {
+      "id": "T065",
+      "scenario": "중복 고객 계정 세 개를 대표 계정 하나로 합쳐지게 했다.",
+      "answerActionId": "A21",
+      "sourceActionId": "A21",
+      "rationale": "둘 이상의 대상을 하나로 합치는 행위 또는 상태 변화이다."
+    },
+    {
+      "id": "T066",
+      "scenario": "감정사가 보석의 상태와 희소성을 헤아려 값을 매겼다.",
+      "answerActionId": "A45",
+      "sourceActionId": "A45",
+      "rationale": "현재 정의에서는 물건의 가치를 헤아려 가격을 매기는 행위로 한정된다."
+    },
+    {
+      "id": "T067",
+      "scenario": "출근 전에 매장의 전원, 잠금장치, 소화기를 항목별로 빠짐없이 살폈다.",
+      "answerActionId": "A03",
+      "sourceActionId": "A03",
+      "rationale": "대상을 낱낱이 살피는 완전성·누락 방지 성격이 핵심이다."
+    },
+    {
+      "id": "T068",
+      "scenario": "행사장에서 자료집을 모든 참가자에게 나누어 주었다.",
+      "answerActionId": "A47",
+      "sourceActionId": "A47",
+      "rationale": "신문·책자·문서 등을 여러 대상에게 널리 나누어 준다."
+    },
+    {
+      "id": "T069",
+      "scenario": "작업 지시에 따라 새로운 보고서 파일을 만들어냈다.",
+      "answerActionId": "A10",
+      "sourceActionId": "A10",
+      "rationale": "전에 없던 사물이나 개념이 생기거나 생기게 하는 것이다."
+    },
+    {
+      "id": "T070",
+      "scenario": "취미로 여러 시대의 우표를 찾아 모았다.",
+      "answerActionId": "A11",
+      "sourceActionId": "A11",
+      "rationale": "취미나 연구를 위해 여러 물건·재료를 찾아 모은다."
+    },
+    {
+      "id": "T071",
+      "scenario": "규정과 사고 기록을 근거로 보험 지급 대상인지 결론 내렸다.",
+      "answerActionId": "A04",
+      "sourceActionId": "A04",
+      "rationale": "논리나 명시적 기준에 따라 판정을 내리는 의사결정이다."
+    },
+    {
+      "id": "T072",
+      "scenario": "부서 운영에 관한 사무를 맡아 여러 업무를 지속적으로 돌봤다.",
+      "answerActionId": "A34",
+      "sourceActionId": "A34",
+      "rationale": "어떤 일의 사무를 맡아 지속적으로 다루는 책임 범위가 핵심이다."
+    },
+    {
+      "id": "T073",
+      "scenario": "한 계좌에 섞여 있던 사업 자금을 두 개의 독립 계좌로 갈랐다.",
+      "answerActionId": "A20",
+      "sourceActionId": "A20",
+      "rationale": "하나로 붙거나 섞인 대상을 서로 나뉘어 떨어지게 한다."
+    },
+    {
+      "id": "T074",
+      "scenario": "총예산을 부서별 몫으로 나누어 금액을 정했다.",
+      "answerActionId": "A36",
+      "sourceActionId": "A36",
+      "rationale": "전체 몫을 여러 주체에게 나누어 각각의 몫을 정한다."
+    },
+    {
+      "id": "T075",
+      "scenario": "온도계로 냉장고 내부 온도를 재어 수치로 기록했다.",
+      "answerActionId": "A40",
+      "sourceActionId": "A40",
+      "rationale": "양·무게·길이·거리·정도 등을 도구나 척도로 잰다."
+    },
+    {
+      "id": "T076",
+      "scenario": "지원자가 기관에 장학금 지급을 요청하는 내용을 알려 청구했다.",
+      "answerActionId": "A53",
+      "sourceActionId": "A53",
+      "rationale": "단체·기관에 일이나 물건을 알려 제공·처리를 청구한다."
+    },
+    {
+      "id": "T077",
+      "scenario": "기한이 지나 효력이 없어진 인증서를 더는 쓰지 못하도록 없앴다.",
+      "answerActionId": "A32",
+      "sourceActionId": "A32",
+      "rationale": "못 쓰게 되었거나 더는 사용할 수 없는 대상을 버린다."
+    },
+    {
+      "id": "T078",
+      "scenario": "주문 테이블에서 고객 정보의 반복을 제거하도록 고객 테이블을 분리해 종속 구조를 정리했다.",
+      "answerActionId": "A19",
+      "sourceActionId": "A19",
+      "rationale": "함수적 종속 관계를 이용해 데이터베이스 구조를 안정화한다."
+    },
+    {
+      "id": "T079",
+      "scenario": "병원이 환자에게 진료비를 지급해 달라고 요구했다.",
+      "answerActionId": "A54",
+      "sourceActionId": "A54",
+      "rationale": "상대방에게 돈이나 물건을 달라고 직접 요구한다."
+    },
+    {
+      "id": "T080",
+      "scenario": "공문 문장에서 틀린 숫자와 표현을 바로 써 넣었다.",
+      "answerActionId": "A24",
+      "sourceActionId": "A24",
+      "rationale": "글·글자의 잘못된 부분을 고치는 데 초점이 있다."
+    },
+    {
+      "id": "T081",
+      "scenario": "입고된 원료의 성분을 조사해 기준에 맞는지 판정했다.",
+      "answerActionId": "A02",
+      "sourceActionId": "A02",
+      "rationale": "사실·상태·성분을 조사한 뒤 옳고 그름 또는 우열을 판정한다."
+    },
+    {
+      "id": "T082",
+      "scenario": "새 조치가 비용 절감이라는 좋은 결과를 냈다.",
+      "answerActionId": "A50",
+      "sourceActionId": "A50",
+      "rationale": "어떤 일이나 작용이 낳은 좋은 결과 자체를 뜻한다."
+    },
+    {
+      "id": "T083",
+      "scenario": "위원회에 의견서를 정식으로 냈다.",
+      "answerActionId": "A29",
+      "sourceActionId": "A29",
+      "rationale": "문안·의견·법안 등을 상대 기관이나 절차에 정식으로 낸다."
+    },
+    {
+      "id": "T084",
+      "scenario": "지원자 중 조건에 가장 맞는 사람을 최종 후보로 뽑았다.",
+      "answerActionId": "A38",
+      "sourceActionId": "A38",
+      "rationale": "여럿 가운데 하나 또는 일부를 뽑아 정한다."
+    },
+    {
+      "id": "T085",
+      "scenario": "최신 인사발령에 맞춰 직원 목록의 부서 정보를 바꾸고 퇴사자를 뺐다.",
+      "answerActionId": "A25",
+      "sourceActionId": "A25",
+      "rationale": "변동된 사실을 반영해 기존 내용을 변경·추가·삭제한다."
+    },
+    {
+      "id": "T086",
+      "scenario": "결재 문서의 금액이 원장과 같은지 다시 대조해 틀림없는지 알아보았다.",
+      "answerActionId": "A01",
+      "sourceActionId": "A01",
+      "rationale": "사실의 참·일치 여부를 알아보거나 인정하는 것이 핵심이며, 체계적 조사와 적부 판정은 없다."
+    },
+    {
+      "id": "T087",
+      "scenario": "계약 내용을 조항별로 분석하고 문제점을 따져 보았다.",
+      "answerActionId": "A15",
+      "sourceActionId": "A15",
+      "rationale": "사실이나 내용을 분석한 뒤 논점·타당성을 따지는 과정이다."
+    },
+    {
+      "id": "T088",
+      "scenario": "사건의 담당 관할을 지역 사무소에서 본부로 옮겼다.",
+      "answerActionId": "A48",
+      "sourceActionId": "A48",
+      "rationale": "물건 자체보다 관할·권한·책임 범위를 다른 주체로 옮긴다."
+    },
+    {
+      "id": "T089",
+      "scenario": "완제품을 택배 운송 수단으로 고객에게 보냈다.",
+      "answerActionId": "A28",
+      "sourceActionId": "A28",
+      "rationale": "우편이나 운송 수단을 이용해 물건·편지·서류를 보낸다."
+    },
+    {
+      "id": "T090",
+      "scenario": "복잡한 사고 원인을 사람·장비·절차 요소로 나누어 살폈다.",
+      "answerActionId": "A42",
+      "sourceActionId": "A42",
+      "rationale": "복잡하게 얽힌 대상을 개별 요소나 성질로 풀어 나눈다."
+    },
+    {
+      "id": "T091",
+      "scenario": "위원회는 결론을 내리지 않고 현장 조사 결과가 나올 때까지 결정을 미뤘다.",
+      "answerActionId": "A17",
+      "sourceActionId": "A17",
+      "rationale": "되돌려주지 않고 현재 처리를 멈춰 나중으로 미루는 행위이다."
+    },
+    {
+      "id": "T092",
+      "scenario": "센서가 물리적 표식을 구별해 대상 종류를 알아냈다.",
+      "answerActionId": "A05",
+      "sourceActionId": "A05",
+      "rationale": "사물을 분별하고 판단해 무엇인지 아는 과정이다."
+    },
+    {
+      "id": "T093",
+      "scenario": "인사팀이 징계 결과를 당사자에게 알리고 통지 완료 사실을 책임자에게 보고했다.",
+      "answerActionId": "A46",
+      "sourceActionId": "A46",
+      "rationale": "현재 정의에 따르면 상대에게 통지한 뒤 그 사실을 보고하는 결합 행위이다."
+    },
+    {
+      "id": "T094",
+      "scenario": "보고를 받은 책임자가 납기 지연이 확정됐다는 사실을 받아들였다.",
+      "answerActionId": "A06",
+      "sourceActionId": "A06",
+      "rationale": "어떤 사실을 인정해 알게 되는 상태 변화가 핵심이다."
+    },
+    {
+      "id": "T095",
+      "scenario": "입학 자격을 갖춘 지원자가 학교에 필요한 문서를 올렸다.",
+      "answerActionId": "A14",
+      "sourceActionId": "A14",
+      "rationale": "자격 조건을 갖추기 위해 단체·학교 등에 문서를 올리는 행위이다."
+    },
+    {
+      "id": "T096",
+      "scenario": "지자체가 재난 대응 제도와 단계별 계획을 마련해 세웠다.",
+      "answerActionId": "A37",
+      "sourceActionId": "A37",
+      "rationale": "국가·정부·조직의 제도나 계획을 이룩해 세운다."
+    },
+    {
+      "id": "T097",
+      "scenario": "배포 전 프로그램의 기능이 실제 사용 환경에서 작동하는지 실행해 보았다.",
+      "answerActionId": "A41",
+      "sourceActionId": "A41",
+      "rationale": "사물의 성질이나 기능을 실제로 작동·적용해 증험해 본다."
+    },
+    {
+      "id": "T098",
+      "scenario": "아직 알려지지 않은 지역 작가를 조사해 찾아내 널리 알렸다.",
+      "answerActionId": "A12",
+      "sourceActionId": "A12",
+      "rationale": "널리 알려지지 않았거나 뛰어난 것을 찾아 밝혀내는 행위이다."
+    },
+    {
+      "id": "T099",
+      "scenario": "두 계약의 성격이 다른 점을 구별해 각각 다른 유형으로 가려냈다.",
+      "answerActionId": "A09",
+      "sourceActionId": "A09",
+      "rationale": "서로 다른 대상의 차이를 구별해 가르는 행위이다."
+    },
+    {
+      "id": "T100",
+      "scenario": "기준식으로 각 사업의 부담금을 셈해 확정했다.",
+      "answerActionId": "A23",
+      "sourceActionId": "A23",
+      "rationale": "계산하거나 셈한 결과로 값을 정한다."
+    },
+    {
+      "id": "T101",
+      "scenario": "회의 일정이 바뀌었다는 기별을 참석자에게 보내 알게 했다.",
+      "answerActionId": "A51",
+      "sourceActionId": "A51",
+      "rationale": "기별이나 정보를 상대에게 보내 알게 하는 단방향 알림이다."
+    },
+    {
+      "id": "T102",
+      "scenario": "화면 배경색을 파랑에서 회색으로 바꾸었다.",
+      "answerActionId": "A26",
+      "sourceActionId": "A26",
+      "rationale": "오류 수정이나 최신화라는 추가 조건 없이 상태를 다르게 바꾼다."
+    },
+    {
+      "id": "T103",
+      "scenario": "담당자가 주문 수량과 단가 숫자를 업무 시스템의 입력 칸에 넣었다.",
+      "answerActionId": "A13",
+      "sourceActionId": "A13",
+      "rationale": "문자나 숫자를 컴퓨터가 기억하도록 넣는 순간의 행위이다."
+    },
+    {
+      "id": "T104",
+      "scenario": "작업 중인 데이터를 서버 디스크에 기록했다.",
+      "answerActionId": "A30",
+      "sourceActionId": "A30",
+      "rationale": "비고의 운영 기준에 따라 매체에 기록하는 순간의 사건으로 본다."
+    },
+    {
+      "id": "T105",
+      "scenario": "상급 기관은 요건이 빠진 신청서를 처리하지 않고 제출자에게 돌려보냈다.",
+      "answerActionId": "A16",
+      "sourceActionId": "A16",
+      "rationale": "제출 문서를 처리하지 않고 제출자 쪽으로 되돌려주는 것이 핵심이다."
+    },
+    {
+      "id": "T106",
+      "scenario": "연구원이 실험 내용과 결과를 회의에서 책임자에게 설명해 알렸다.",
+      "answerActionId": "A52",
+      "sourceActionId": "A52",
+      "rationale": "일의 내용이나 결과를 말이나 글로 책임자·관계자에게 알린다."
+    },
+    {
+      "id": "T107",
+      "scenario": "민원인이 낸 신고서를 창구에서 받아 처리번호를 부여했다.",
+      "answerActionId": "A07",
+      "sourceActionId": "A07",
+      "rationale": "신청·신고를 구두나 문서로 받는 수신 행위이다."
+    },
+    {
+      "id": "T108",
+      "scenario": "연구에 필요한 조직 표본을 대상에서 얻었다.",
+      "answerActionId": "A39",
+      "sourceActionId": "A39",
+      "rationale": "연구·조사에 필요한 것을 대상이나 현장에서 받아 얻는다."
+    },
+    {
+      "id": "T109",
+      "scenario": "담당자가 제안서의 근거와 내용을 분석하며 타당한지 따져 보았다.",
+      "answerActionId": "A15",
+      "sourceActionId": "A15",
+      "rationale": "사실이나 내용을 분석한 뒤 논점·타당성을 따지는 과정이다."
+    },
+    {
+      "id": "T110",
+      "scenario": "화면의 서로 다른 도형을 구별하고 그것이 경고 표지임을 알아차렸다.",
+      "answerActionId": "A05",
+      "sourceActionId": "A05",
+      "rationale": "사물을 분별하고 판단해 무엇인지 아는 과정이다."
+    },
+    {
+      "id": "T111",
+      "scenario": "계약서에 틀리게 적힌 날짜를 바른 날짜로 고쳤다.",
+      "answerActionId": "A24",
+      "sourceActionId": "A24",
+      "rationale": "글·글자의 잘못된 부분을 고치는 데 초점이 있다."
+    },
+    {
+      "id": "T112",
+      "scenario": "비뚤어진 문틀을 수평에 맞게 조정했다.",
+      "answerActionId": "A43",
+      "sourceActionId": "A43",
+      "rationale": "틀어지거나 잘못된 대상을 올바른 상태로 바로잡는다."
+    },
+    {
+      "id": "T113",
+      "scenario": "담당자는 서류를 돌려주지 않은 채 예산이 확보될 때까지 실행을 늦췄다.",
+      "answerActionId": "A17",
+      "sourceActionId": "A17",
+      "rationale": "되돌려주지 않고 현재 처리를 멈춰 나중으로 미루는 행위이다."
+    },
+    {
+      "id": "T114",
+      "scenario": "연구자가 관련 논문과 통계 자료를 여러 출처에서 찾아 모았다.",
+      "answerActionId": "A11",
+      "sourceActionId": "A11",
+      "rationale": "취미나 연구를 위해 여러 물건·재료를 찾아 모은다."
+    },
+    {
+      "id": "T115",
+      "scenario": "과거 자료에서 아직 알려지지 않은 우수 개선 사례를 찾아 밝혀냈다.",
+      "answerActionId": "A12",
+      "sourceActionId": "A12",
+      "rationale": "널리 알려지지 않았거나 뛰어난 것을 찾아 밝혀내는 행위이다."
+    },
+    {
+      "id": "T116",
+      "scenario": "새 장비의 성능이 사양대로 작동하는지 실제로 작동시켜 보았다.",
+      "answerActionId": "A41",
+      "sourceActionId": "A41",
+      "rationale": "사물의 성질이나 기능을 실제로 작동·적용해 증험해 본다."
+    },
+    {
+      "id": "T117",
+      "scenario": "사용자가 인증 코드를 키보드로 넣어 컴퓨터가 읽고 기억하게 했다.",
+      "answerActionId": "A13",
+      "sourceActionId": "A13",
+      "rationale": "문자나 숫자를 컴퓨터가 기억하도록 넣는 순간의 행위이다."
+    },
+    {
+      "id": "T118",
+      "scenario": "상급 기관이 형식이 맞지 않는 보고서를 처리하지 않은 채 작성자에게 되돌렸다.",
+      "answerActionId": "A16",
+      "sourceActionId": "A16",
+      "rationale": "제출 문서를 처리하지 않고 제출자 쪽으로 되돌려주는 것이 핵심이다."
+    },
+    {
+      "id": "T119",
+      "scenario": "본사의 지시를 지역 사무소에 전해 도달하게 했다.",
+      "answerActionId": "A27",
+      "sourceActionId": "A27",
+      "rationale": "지시·명령·물품 등을 특정 사람이나 기관에 이르게 한다."
+    },
+    {
+      "id": "T120",
+      "scenario": "서류의 기재 상태와 증빙을 조사한 뒤 적합·부적합을 판정했다.",
+      "answerActionId": "A02",
+      "sourceActionId": "A02",
+      "rationale": "사실·상태·성분을 조사한 뒤 옳고 그름 또는 우열을 판정한다."
+    },
+    {
+      "id": "T121",
+      "scenario": "고객·주문 데이터의 부분 종속을 제거해 데이터베이스 구조를 안정화했다.",
+      "answerActionId": "A19",
+      "sourceActionId": "A19",
+      "rationale": "함수적 종속 관계를 이용해 데이터베이스 구조를 안정화한다."
+    },
+    {
+      "id": "T122",
+      "scenario": "거리와 단가를 기준식에 넣어 운송비를 계산해 확정했다.",
+      "answerActionId": "A23",
+      "sourceActionId": "A23",
+      "rationale": "계산하거나 셈한 결과로 값을 정한다."
+    },
+    {
+      "id": "T123",
+      "scenario": "계약 종료일을 상대방에게 이메일로 보내 알게 했다.",
+      "answerActionId": "A51",
+      "sourceActionId": "A51",
+      "rationale": "기별이나 정보를 상대에게 보내 알게 하는 단방향 알림이다."
+    },
+    {
+      "id": "T124",
+      "scenario": "겹치는 두 데이터 목록을 중복 없이 하나의 목록으로 합쳤다.",
+      "answerActionId": "A21",
+      "sourceActionId": "A21",
+      "rationale": "둘 이상의 대상을 하나로 합치는 행위 또는 상태 변화이다."
+    },
+    {
+      "id": "T125",
+      "scenario": "현장 담당자가 사고 경위와 조치 결과를 문서로 상급자에게 알렸다.",
+      "answerActionId": "A52",
+      "sourceActionId": "A52",
+      "rationale": "일의 내용이나 결과를 말이나 글로 책임자·관계자에게 알린다."
+    },
+    {
+      "id": "T126",
+      "scenario": "심사를 받기 위해 법안 초안을 담당 기관에 냈다.",
+      "answerActionId": "A29",
+      "sourceActionId": "A29",
+      "rationale": "문안·의견·법안 등을 상대 기관이나 절차에 정식으로 낸다."
+    },
+    {
+      "id": "T127",
+      "scenario": "대여자가 빌려준 장비를 기한 내 돌려달라고 상대에게 요구했다.",
+      "answerActionId": "A54",
+      "sourceActionId": "A54",
+      "rationale": "상대방에게 돈이나 물건을 달라고 직접 요구한다."
+    },
+    {
+      "id": "T128",
+      "scenario": "업체가 보낸 장비의 품질을 확인하고 계약 조건에 맞아 받아들였다.",
+      "answerActionId": "A44",
+      "sourceActionId": "A44",
+      "rationale": "물건의 규격·수량·품질을 검사한 후 그 물건을 받는 데까지 포함한다."
+    },
+    {
+      "id": "T129",
+      "scenario": "위원회가 사업 변경안을 타당하다고 인정해 시행하도록 했다.",
+      "answerActionId": "A08",
+      "sourceActionId": "A08",
+      "rationale": "어떤 사실이나 요청을 마땅하다고 받아들여 허용하는 결정이다."
+    },
+    {
+      "id": "T130",
+      "scenario": "새 지침 문서를 전 직원에게 고르게 나누어 주었다.",
+      "answerActionId": "A47",
+      "sourceActionId": "A47",
+      "rationale": "신문·책자·문서 등을 여러 대상에게 널리 나누어 준다."
+    },
+    {
+      "id": "T131",
+      "scenario": "개선 장치를 실제로 시험한 뒤 성능 향상 효과가 확인된 결과를 기록했다.",
+      "answerActionId": "A49",
+      "sourceActionId": "A49",
+      "rationale": "현재 정의에서는 시험해 본 효험, 즉 시험을 통해 드러난 효과에 초점이 있다."
+    },
+    {
+      "id": "T132",
+      "scenario": "설정값을 이전과 다르게 바꿨지만 오류를 바로잡거나 최신 사실을 반영한 것은 아니었다.",
+      "answerActionId": "A26",
+      "sourceActionId": "A26",
+      "rationale": "오류 수정이나 최신화라는 추가 조건 없이 상태를 다르게 바꾼다."
+    },
+    {
+      "id": "T133",
+      "scenario": "새 사실을 반영해 기존 목록에서 항목을 추가·변경·삭제했다.",
+      "answerActionId": "A25",
+      "sourceActionId": "A25",
+      "rationale": "변동된 사실을 반영해 기존 내용을 변경·추가·삭제한다."
+    },
+    {
+      "id": "T134",
+      "scenario": "상담원이 고객의 고장 신고를 전화로 받아 처리 대기열에 올렸다.",
+      "answerActionId": "A07",
+      "sourceActionId": "A07",
+      "rationale": "신청·신고를 구두나 문서로 받는 수신 행위이다."
+    },
+    {
+      "id": "T135",
+      "scenario": "파일을 보안 등급 기준으로 공개, 내부, 기밀로 갈랐다.",
+      "answerActionId": "A18",
+      "sourceActionId": "A18",
+      "rationale": "종류나 범주 기준에 따라 여러 집합으로 가르는 행위이다."
+    },
+    {
+      "id": "T136",
+      "scenario": "팀장이 여러 프로젝트의 일정과 자원을 지속적으로 조정했다.",
+      "answerActionId": "A34",
+      "sourceActionId": "A34",
+      "rationale": "어떤 일의 사무를 맡아 지속적으로 다루는 책임 범위가 핵심이다."
+    },
+    {
+      "id": "T137",
+      "scenario": "정부가 5개년 산업 계획을 만들어 세웠다.",
+      "answerActionId": "A37",
+      "sourceActionId": "A37",
+      "rationale": "국가·정부·조직의 제도나 계획을 이룩해 세운다."
+    },
+    {
+      "id": "T138",
+      "scenario": "응모작 여러 개 가운데 전시할 작품 다섯 개를 뽑아 정했다.",
+      "answerActionId": "A38",
+      "sourceActionId": "A38",
+      "rationale": "여럿 가운데 하나 또는 일부를 뽑아 정한다."
+    },
+    {
+      "id": "T139",
+      "scenario": "직원이 회사에 교육비 지원을 해 달라는 요청서를 냈다.",
+      "answerActionId": "A53",
+      "sourceActionId": "A53",
+      "rationale": "단체·기관에 일이나 물건을 알려 제공·처리를 청구한다."
+    },
+    {
+      "id": "T140",
+      "scenario": "계약 서류를 등기우편으로 거래처에 보냈다.",
+      "answerActionId": "A28",
+      "sourceActionId": "A28",
+      "rationale": "우편이나 운송 수단을 이용해 물건·편지·서류를 보낸다."
+    },
+    {
+      "id": "T141",
+      "scenario": "처분 결과를 당사자에게 알린 뒤 기관 내부에 알렸음을 보고했다.",
+      "answerActionId": "A46",
+      "sourceActionId": "A46",
+      "rationale": "현재 정의에 따르면 상대에게 통지한 뒤 그 사실을 보고하는 결합 행위이다."
+    },
+    {
+      "id": "T142",
+      "scenario": "계약서에 적힌 계좌번호가 고객이 알려준 번호와 일치하는지만 대조했다.",
+      "answerActionId": "A01",
+      "sourceActionId": "A01",
+      "rationale": "사실의 참·일치 여부를 알아보거나 인정하는 것이 핵심이며, 체계적 조사와 적부 판정은 없다."
+    },
+    {
+      "id": "T143",
+      "scenario": "주문이 확정되자 시스템에 새 배송 작업이 생겼다.",
+      "answerActionId": "A10",
+      "sourceActionId": "A10",
+      "rationale": "전에 없던 사물이나 개념이 생기거나 생기게 하는 것이다."
+    },
+    {
+      "id": "T144",
+      "scenario": "공지된 일정 변경 사실을 받아들여 알게 되었다.",
+      "answerActionId": "A06",
+      "sourceActionId": "A06",
+      "rationale": "어떤 사실을 인정해 알게 되는 상태 변화가 핵심이다."
+    },
+    {
+      "id": "T145",
+      "scenario": "고객의 주소 변경 요청을 정해진 절차대로 반영하고 건을 종료했다.",
+      "answerActionId": "A22",
+      "sourceActionId": "A22",
+      "rationale": "사무나 사건을 절차에 따라 정리해 끝내는 종결성이 핵심이다."
+    },
+    {
+      "id": "T146",
+      "scenario": "맡겨진 물건을 일정 기간 훼손되지 않게 간직하고 관리했다.",
+      "answerActionId": "A31",
+      "sourceActionId": "A31",
+      "rationale": "맡은 물건을 일정 기간 상태가 유지되도록 간직·관리한다."
+    },
+    {
+      "id": "T147",
+      "scenario": "항목을 앞으로 사용하지 않기로 표시했다.",
+      "answerActionId": "UNDECIDABLE",
+      "sourceActionId": "A33",
+      "rationale": "원본의 정의가 '-'로 비어 있어 포함·제외 조건을 판정할 수 없다."
+    },
+    {
+      "id": "T148",
+      "scenario": "수질 조사를 위해 강에서 물 시료를 받아 얻었다.",
+      "answerActionId": "A39",
+      "sourceActionId": "A39",
+      "rationale": "연구·조사에 필요한 것을 대상이나 현장에서 받아 얻는다."
+    },
+    {
+      "id": "T149",
+      "scenario": "레이저 장비로 두 건물 사이 거리를 쟀다.",
+      "answerActionId": "A40",
+      "sourceActionId": "A40",
+      "rationale": "양·무게·길이·거리·정도 등을 도구나 척도로 잰다."
+    },
+    {
+      "id": "T150",
+      "scenario": "수집한 증거를 규정과 비교해 책임 여부를 판정했다.",
+      "answerActionId": "A04",
+      "sourceActionId": "A04",
+      "rationale": "논리나 명시적 기준에 따라 판정을 내리는 의사결정이다."
+    },
+    {
+      "id": "T151",
+      "scenario": "서버 설정 항목을 하나씩 빠짐없이 살펴 이상 유무를 살폈다.",
+      "answerActionId": "A03",
+      "sourceActionId": "A03",
+      "rationale": "대상을 낱낱이 살피는 완전성·누락 방지 성격이 핵심이다."
+    },
+    {
+      "id": "T152",
+      "scenario": "자격을 갖춘 기술자가 협회 명부에 오르기 위한 서류를 냈다.",
+      "answerActionId": "A14",
+      "sourceActionId": "A14",
+      "rationale": "자격 조건을 갖추기 위해 단체·학교 등에 문서를 올리는 행위이다."
+    },
+    {
+      "id": "T153",
+      "scenario": "사업의 승인 권한과 관리 책임을 새 조직으로 넘겼다.",
+      "answerActionId": "A48",
+      "sourceActionId": "A48",
+      "rationale": "물건 자체보다 관할·권한·책임 범위를 다른 주체로 옮긴다."
+    },
+    {
+      "id": "T154",
+      "scenario": "상담 요청을 상담원별 업무량에 맞춰 나누어 맡겼다.",
+      "answerActionId": "A36",
+      "sourceActionId": "A36",
+      "rationale": "전체 몫을 여러 주체에게 나누어 각각의 몫을 정한다."
+    },
+    {
+      "id": "T155",
+      "scenario": "고객과 주문 데이터 사이에 관계를 맺게 했다.",
+      "answerActionId": "A35",
+      "sourceActionId": "A35",
+      "rationale": "둘 이상의 사물·현상을 잇거나 관계를 맺게 하되 하나로 합치지는 않는다."
+    },
+    {
+      "id": "T156",
+      "scenario": "매출 변화를 지역과 상품별 요소로 풀어 나누었다.",
+      "answerActionId": "A42",
+      "sourceActionId": "A42",
+      "rationale": "복잡하게 얽힌 대상을 개별 요소나 성질로 풀어 나눈다."
+    },
+    {
+      "id": "T157",
+      "scenario": "치료 작용으로 증상이 좋아지는 결과가 나타났다.",
+      "answerActionId": "A50",
+      "sourceActionId": "A50",
+      "rationale": "어떤 일이나 작용이 낳은 좋은 결과 자체를 뜻한다."
+    },
+    {
+      "id": "T158",
+      "scenario": "겉모양이 비슷한 두 원료를 냄새와 질감 차이로 가려냈다.",
+      "answerActionId": "A09",
+      "sourceActionId": "A09",
+      "rationale": "서로 다른 대상의 차이를 구별해 가르는 행위이다."
+    },
+    {
+      "id": "T159",
+      "scenario": "한 파일에 섞인 데이터를 두 개의 독립 파일로 나누어 떨어뜨렸다.",
+      "answerActionId": "A20",
+      "sourceActionId": "A20",
+      "rationale": "하나로 붙거나 섞인 대상을 서로 나뉘어 떨어지게 한다."
+    },
+    {
+      "id": "T160",
+      "scenario": "경매 전에 미술품의 가치를 따져 시작 가격을 정했다.",
+      "answerActionId": "A45",
+      "sourceActionId": "A45",
+      "rationale": "현재 정의에서는 물건의 가치를 헤아려 가격을 매기는 행위로 한정된다."
+    },
+    {
+      "id": "T161",
+      "scenario": "효력이 끝나 더는 쓸 수 없는 문서를 없앴다.",
+      "answerActionId": "A32",
+      "sourceActionId": "A32",
+      "rationale": "못 쓰게 되었거나 더는 사용할 수 없는 대상을 버린다."
+    },
+    {
+      "id": "T162",
+      "scenario": "작성 중인 문서의 내용을 클라우드 매체에 기록해 다시 열 수 있게 했다.",
+      "answerActionId": "A30",
+      "sourceActionId": "A30",
+      "rationale": "비고의 운영 기준에 따라 매체에 기록하는 순간의 사건으로 본다."
+    },
+    {
+      "id": "T163",
+      "scenario": "회의 장소를 3층에서 5층으로 다르게 바꿨다.",
+      "answerActionId": "A26",
+      "sourceActionId": "A26",
+      "rationale": "오류 수정이나 최신화라는 추가 조건 없이 상태를 다르게 바꾼다."
+    },
+    {
+      "id": "T164",
+      "scenario": "필수 서명이 빠진 지출 문서를 처리하지 않고 신청 부서로 돌려보냈다.",
+      "answerActionId": "A16",
+      "sourceActionId": "A16",
+      "rationale": "제출 문서를 처리하지 않고 제출자 쪽으로 되돌려주는 것이 핵심이다."
+    },
+    {
+      "id": "T165",
+      "scenario": "제안된 여러 안 중 실행할 안을 뽑아 확정했다.",
+      "answerActionId": "A38",
+      "sourceActionId": "A38",
+      "rationale": "여럿 가운데 하나 또는 일부를 뽑아 정한다."
+    },
+    {
+      "id": "T166",
+      "scenario": "토양 오염 조사를 위해 현장에서 흙 시료를 얻었다.",
+      "answerActionId": "A39",
+      "sourceActionId": "A39",
+      "rationale": "연구·조사에 필요한 것을 대상이나 현장에서 받아 얻는다."
+    },
+    {
+      "id": "T167",
+      "scenario": "생산품의 표면 상태를 조사해 합격과 불합격을 가렸다.",
+      "answerActionId": "A02",
+      "sourceActionId": "A02",
+      "rationale": "사실·상태·성분을 조사한 뒤 옳고 그름 또는 우열을 판정한다."
+    },
+    {
+      "id": "T168",
+      "scenario": "민원 사건의 담당 관할을 구청에서 시청으로 옮겼다.",
+      "answerActionId": "A48",
+      "sourceActionId": "A48",
+      "rationale": "물건 자체보다 관할·권한·책임 범위를 다른 주체로 옮긴다."
+    },
+    {
+      "id": "T169",
+      "scenario": "사용량과 요율을 곱해 이번 달 요금을 정했다.",
+      "answerActionId": "A23",
+      "sourceActionId": "A23",
+      "rationale": "계산하거나 셈한 결과로 값을 정한다."
+    },
+    {
+      "id": "T170",
+      "scenario": "도착한 자재의 수량과 규격을 살핀 뒤 납품 물건을 인수했다.",
+      "answerActionId": "A44",
+      "sourceActionId": "A44",
+      "rationale": "물건의 규격·수량·품질을 검사한 후 그 물건을 받는 데까지 포함한다."
+    },
+    {
+      "id": "T171",
+      "scenario": "두 대안의 비용과 위험을 기준으로 어느 안이 더 적절한지 결론을 내렸다.",
+      "answerActionId": "A04",
+      "sourceActionId": "A04",
+      "rationale": "논리나 명시적 기준에 따라 판정을 내리는 의사결정이다."
+    },
+    {
+      "id": "T172",
+      "scenario": "접수된 사건을 정해진 절차대로 정리해 마무리했다.",
+      "answerActionId": "A22",
+      "sourceActionId": "A22",
+      "rationale": "사무나 사건을 절차에 따라 정리해 끝내는 종결성이 핵심이다."
+    },
+    {
+      "id": "T173",
+      "scenario": "공급업체가 거래처에 미지급 대금을 달라고 요구했다.",
+      "answerActionId": "A54",
+      "sourceActionId": "A54",
+      "rationale": "상대방에게 돈이나 물건을 달라고 직접 요구한다."
+    },
+    {
+      "id": "T174",
+      "scenario": "수강 조건을 충족한 학생이 학교 과정 명단에 오르도록 서류를 올렸다.",
+      "answerActionId": "A14",
+      "sourceActionId": "A14",
+      "rationale": "자격 조건을 갖추기 위해 단체·학교 등에 문서를 올리는 행위이다."
+    },
+    {
+      "id": "T175",
+      "scenario": "상품을 종류에 따라 식품·의류·전자제품으로 갈랐다.",
+      "answerActionId": "A18",
+      "sourceActionId": "A18",
+      "rationale": "종류나 범주 기준에 따라 여러 집합으로 가르는 행위이다."
+    },
+    {
+      "id": "T176",
+      "scenario": "보고된 사실을 근거와 비교 분석해 타당성을 따졌다.",
+      "answerActionId": "A15",
+      "sourceActionId": "A15",
+      "rationale": "사실이나 내용을 분석한 뒤 논점·타당성을 따지는 과정이다."
+    },
+    {
+      "id": "T177",
+      "scenario": "확보된 차량을 노선별 몫으로 나누어 정했다.",
+      "answerActionId": "A36",
+      "sourceActionId": "A36",
+      "rationale": "전체 몫을 여러 주체에게 나누어 각각의 몫을 정한다."
+    },
+    {
+      "id": "T178",
+      "scenario": "카메라가 영상 속 사람과 차량을 구별해 각각 무엇인지 알아냈다.",
+      "answerActionId": "A05",
+      "sourceActionId": "A05",
+      "rationale": "사물을 분별하고 판단해 무엇인지 아는 과정이다."
+    },
+    {
+      "id": "T179",
+      "scenario": "시스템 장애가 이미 발생했다는 사실을 보고 인정해 알게 되었다.",
+      "answerActionId": "A06",
+      "sourceActionId": "A06",
+      "rationale": "어떤 사실을 인정해 알게 되는 상태 변화가 핵심이다."
+    },
+    {
+      "id": "T180",
+      "scenario": "여러 부서에 흩어진 회의 자료를 찾아 한 폴더에 모았다.",
+      "answerActionId": "A11",
+      "sourceActionId": "A11",
+      "rationale": "취미나 연구를 위해 여러 물건·재료를 찾아 모은다."
+    },
+    {
+      "id": "T181",
+      "scenario": "한 부서였던 조직을 두 조직으로 갈라 서로 독립시켰다.",
+      "answerActionId": "A20",
+      "sourceActionId": "A20",
+      "rationale": "하나로 붙거나 섞인 대상을 서로 나뉘어 떨어지게 한다."
+    },
+    {
+      "id": "T182",
+      "scenario": "저울로 상자의 무게를 쟀다.",
+      "answerActionId": "A40",
+      "sourceActionId": "A40",
+      "rationale": "양·무게·길이·거리·정도 등을 도구나 척도로 잰다."
+    },
+    {
+      "id": "T183",
+      "scenario": "안내 책자를 여러 참석자에게 널리 나누어 주었다.",
+      "answerActionId": "A47",
+      "sourceActionId": "A47",
+      "rationale": "신문·책자·문서 등을 여러 대상에게 널리 나누어 준다."
+    },
+    {
+      "id": "T184",
+      "scenario": "시민이 관청에 서비스 이용 의사를 알리고 제공해 달라고 요청했다.",
+      "answerActionId": "A53",
+      "sourceActionId": "A53",
+      "rationale": "단체·기관에 일이나 물건을 알려 제공·처리를 청구한다."
+    },
+    {
+      "id": "T185",
+      "scenario": "기관이 변경된 처분을 관계자에게 알린 뒤 상급 기관에 알렸음을 보고했다.",
+      "answerActionId": "A46",
+      "sourceActionId": "A46",
+      "rationale": "현재 정의에 따르면 상대에게 통지한 뒤 그 사실을 보고하는 결합 행위이다."
+    },
+    {
+      "id": "T186",
+      "scenario": "만료일이 바뀐 사실을 반영해 기존 인증정보의 날짜를 새로 바꿨다.",
+      "answerActionId": "A25",
+      "sourceActionId": "A25",
+      "rationale": "변동된 사실을 반영해 기존 내용을 변경·추가·삭제한다."
+    },
+    {
+      "id": "T187",
+      "scenario": "요청 건을 돌려보내지는 않은 채 다음 회의까지 처리하지 않기로 했다.",
+      "answerActionId": "A17",
+      "sourceActionId": "A17",
+      "rationale": "되돌려주지 않고 현재 처리를 멈춰 나중으로 미루는 행위이다."
+    },
+    {
+      "id": "T188",
+      "scenario": "서로 다른 세 법인이 절차를 거쳐 한 법인이 되었다.",
+      "answerActionId": "A21",
+      "sourceActionId": "A21",
+      "rationale": "둘 이상의 대상을 하나로 합치는 행위 또는 상태 변화이다."
+    },
+    {
+      "id": "T189",
+      "scenario": "새 치료법을 시험해 본 뒤 실제 효과가 있었음을 확인한 결과가 남았다.",
+      "answerActionId": "A49",
+      "sourceActionId": "A49",
+      "rationale": "현재 정의에서는 시험해 본 효험, 즉 시험을 통해 드러난 효과에 초점이 있다."
+    },
+    {
+      "id": "T190",
+      "scenario": "고장 나 재사용할 수 없는 배터리를 정해진 방법으로 버렸다.",
+      "answerActionId": "A32",
+      "sourceActionId": "A32",
+      "rationale": "못 쓰게 되었거나 더는 사용할 수 없는 대상을 버린다."
+    },
+    {
+      "id": "T191",
+      "scenario": "제출된 계획이 타당하다고 받아들여 시행해도 좋다고 결정했다.",
+      "answerActionId": "A08",
+      "sourceActionId": "A08",
+      "rationale": "어떤 사실이나 요청을 마땅하다고 받아들여 허용하는 결정이다."
+    },
+    {
+      "id": "T192",
+      "scenario": "박물관이 유물을 온습도를 유지하며 장기간 간직하고 관리했다.",
+      "answerActionId": "A31",
+      "sourceActionId": "A31",
+      "rationale": "맡은 물건을 일정 기간 상태가 유지되도록 간직·관리한다."
+    },
+    {
+      "id": "T193",
+      "scenario": "담당자가 프로젝트 사무를 맡아 일정과 이슈를 계속 다뤘다.",
+      "answerActionId": "A34",
+      "sourceActionId": "A34",
+      "rationale": "어떤 일의 사무를 맡아 지속적으로 다루는 책임 범위가 핵심이다."
+    },
+    {
+      "id": "T194",
+      "scenario": "녹음 파일을 휴대전화 메모리에 기록했다.",
+      "answerActionId": "A30",
+      "sourceActionId": "A30",
+      "rationale": "비고의 운영 기준에 따라 매체에 기록하는 순간의 사건으로 본다."
+    },
+    {
+      "id": "T195",
+      "scenario": "잘못 맞춰진 센서의 기준값을 바르게 조정했다.",
+      "answerActionId": "A43",
+      "sourceActionId": "A43",
+      "rationale": "틀어지거나 잘못된 대상을 올바른 상태로 바로잡는다."
+    },
+    {
+      "id": "T196",
+      "scenario": "로그인 정보와 고객 프로필이 같은 사용자 관계로 이어지게 했다.",
+      "answerActionId": "A35",
+      "sourceActionId": "A35",
+      "rationale": "둘 이상의 사물·현상을 잇거나 관계를 맺게 하되 하나로 합치지는 않는다."
+    },
+    {
+      "id": "T197",
+      "scenario": "기록 속에 묻혀 있던 뛰어난 후보를 찾아 세상에 드러냈다.",
+      "answerActionId": "A12",
+      "sourceActionId": "A12",
+      "rationale": "널리 알려지지 않았거나 뛰어난 것을 찾아 밝혀내는 행위이다."
+    },
+    {
+      "id": "T198",
+      "scenario": "함수 종속성을 기준으로 한 테이블을 여러 테이블로 나눠 중복을 줄이고 구조를 안정시켰다.",
+      "answerActionId": "A19",
+      "sourceActionId": "A19",
+      "rationale": "함수적 종속 관계를 이용해 데이터베이스 구조를 안정화한다."
+    },
+    {
+      "id": "T199",
+      "scenario": "담당자에게 회의 시간이 오후 3시가 맞는지 물어 사실 여부만 알아보았다.",
+      "answerActionId": "A01",
+      "sourceActionId": "A01",
+      "rationale": "사실의 참·일치 여부를 알아보거나 인정하는 것이 핵심이며, 체계적 조사와 적부 판정은 없다."
+    },
+    {
+      "id": "T200",
+      "scenario": "감정인이 물건의 가치를 헤아려 가격을 매겼다.",
+      "answerActionId": "A45",
+      "sourceActionId": "A45",
+      "rationale": "현재 정의에서는 물건의 가치를 헤아려 가격을 매기는 행위로 한정된다."
+    },
+    {
+      "id": "T201",
+      "scenario": "담당자가 업무 결과를 글로 작성해 상급자에게 알렸다.",
+      "answerActionId": "A52",
+      "sourceActionId": "A52",
+      "rationale": "일의 내용이나 결과를 말이나 글로 책임자·관계자에게 알린다."
+    },
+    {
+      "id": "T202",
+      "scenario": "센서가 읽은 숫자를 시스템 메모리에 기록했다.",
+      "answerActionId": "A13",
+      "sourceActionId": "A13",
+      "rationale": "문자나 숫자를 컴퓨터가 기억하도록 넣는 순간의 행위이다."
+    },
+    {
+      "id": "T203",
+      "scenario": "새 고객 계정이 시스템에 생겨 사용 가능 상태가 되었다.",
+      "answerActionId": "A10",
+      "sourceActionId": "A10",
+      "rationale": "전에 없던 사물이나 개념이 생기거나 생기게 하는 것이다."
+    },
+    {
+      "id": "T204",
+      "scenario": "보고서의 잘못된 문장과 오탈자를 고쳤다.",
+      "answerActionId": "A24",
+      "sourceActionId": "A24",
+      "rationale": "글·글자의 잘못된 부분을 고치는 데 초점이 있다."
+    },
+    {
+      "id": "T205",
+      "scenario": "현장 책임자에게 본부의 안전 지시가 정확히 이르도록 전했다.",
+      "answerActionId": "A27",
+      "sourceActionId": "A27",
+      "rationale": "지시·명령·물품 등을 특정 사람이나 기관에 이르게 한다."
+    },
+    {
+      "id": "T206",
+      "scenario": "새 홍보 활동이 방문자 증가라는 좋은 결과를 가져왔다.",
+      "answerActionId": "A50",
+      "sourceActionId": "A50",
+      "rationale": "어떤 일이나 작용이 낳은 좋은 결과 자체를 뜻한다."
+    },
+    {
+      "id": "T207",
+      "scenario": "기관이 온라인으로 들어온 신고 내용을 받아 사건번호를 만들었다.",
+      "answerActionId": "A07",
+      "sourceActionId": "A07",
+      "rationale": "신청·신고를 구두나 문서로 받는 수신 행위이다."
+    },
+    {
+      "id": "T208",
+      "scenario": "합격 여부를 지원자 개인에게 문자로 알려 주었다.",
+      "answerActionId": "A51",
+      "sourceActionId": "A51",
+      "rationale": "기별이나 정보를 상대에게 보내 알게 하는 단방향 알림이다."
+    },
+    {
+      "id": "T209",
+      "scenario": "비슷해 보이는 정상품과 모조품을 특징 차이로 가려냈다.",
+      "answerActionId": "A09",
+      "sourceActionId": "A09",
+      "rationale": "서로 다른 대상의 차이를 구별해 가르는 행위이다."
+    },
+    {
+      "id": "T210",
+      "scenario": "물류센터에서 상품 상자를 화물차 편으로 거래처에 보냈다.",
+      "answerActionId": "A28",
+      "sourceActionId": "A28",
+      "rationale": "우편이나 운송 수단을 이용해 물건·편지·서류를 보낸다."
+    },
+    {
+      "id": "T211",
+      "scenario": "새 소재가 반복 충격을 견디는지 실제 장비로 적용해 보았다.",
+      "answerActionId": "A41",
+      "sourceActionId": "A41",
+      "rationale": "사물의 성질이나 기능을 실제로 작동·적용해 증험해 본다."
+    },
+    {
+      "id": "T212",
+      "scenario": "배포 전 보고서의 페이지, 첨부, 서명 누락을 하나하나 살폈다.",
+      "answerActionId": "A03",
+      "sourceActionId": "A03",
+      "rationale": "대상을 낱낱이 살피는 완전성·누락 방지 성격이 핵심이다."
+    },
+    {
+      "id": "T213",
+      "scenario": "코드는 삭제하지 않고 더 이상 선택되지 않도록 상태만 바꿨다.",
+      "answerActionId": "UNDECIDABLE",
+      "sourceActionId": "A33",
+      "rationale": "원본의 정의가 '-'로 비어 있어 포함·제외 조건을 판정할 수 없다."
+    },
+    {
+      "id": "T214",
+      "scenario": "직원이 심사위원회에 개선 의견서를 냈다.",
+      "answerActionId": "A29",
+      "sourceActionId": "A29",
+      "rationale": "문안·의견·법안 등을 상대 기관이나 절차에 정식으로 낸다."
+    },
+    {
+      "id": "T215",
+      "scenario": "회사가 향후 3년의 투자 방향과 실행 계획을 세웠다.",
+      "answerActionId": "A37",
+      "sourceActionId": "A37",
+      "rationale": "국가·정부·조직의 제도나 계획을 이룩해 세운다."
+    },
+    {
+      "id": "T216",
+      "scenario": "복잡한 문장을 주어, 서술어, 수식 요소로 풀어 나누었다.",
+      "answerActionId": "A42",
+      "sourceActionId": "A42",
+      "rationale": "복잡하게 얽힌 대상을 개별 요소나 성질로 풀어 나눈다."
+    }
+  ]
+}
