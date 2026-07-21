@@ -30,12 +30,19 @@ type ActionOption = {
   criteriaStatus?: string;
 };
 
+type ActionGroupDefinition = {
+  id: string;
+  title: string;
+  description: string;
+  actionIds: string[];
+};
+
 const STORAGE_KEY = `definition-action-test:${testData.meta.version}`;
 const PREVIEW_QUESTION_COUNT = 12;
 
 const questionById = new Map(testData.questions.map((question) => [question.id, question]));
 
-const actionOptions: ActionOption[] = [
+const rawActionOptions: ActionOption[] = [
   ...testData.actions.map((action) => ({
     id: action.id,
     name: action.name,
@@ -52,10 +59,75 @@ const actionOptions: ActionOption[] = [
     keyTerms: [] as string[],
     criteriaStatus: "메타 선택",
   })),
-].sort((a, b) => a.name.localeCompare(b.name, "ko"));
+];
+
+const ACTION_GROUPS: ActionGroupDefinition[] = [
+  {
+    id: "understand",
+    title: "알아보기 · 구별하기",
+    description: "사실이나 대상을 알고, 구별하고, 판정을 내리는 행위",
+    actionIds: ["A01", "A04", "A05", "A06", "A09"],
+  },
+  {
+    id: "examine",
+    title: "검사하기 · 분석하기",
+    description: "상태나 성질을 살피고, 시험하고, 평가하는 행위",
+    actionIds: ["A02", "A03", "A15", "A40", "A41", "A42", "A44", "A45", "A49", "A50"],
+  },
+  {
+    id: "collect",
+    title: "요청하기 · 받기 · 모으기",
+    description: "요청을 내거나 받아들이고, 필요한 대상을 찾아 모으는 행위",
+    actionIds: ["A07", "A11", "A12", "A39", "A53", "A54"],
+  },
+  {
+    id: "record",
+    title: "만들기 · 기록하기 · 보관하기",
+    description: "대상을 만들고 시스템에 남기거나 간직하는 행위",
+    actionIds: ["A10", "A13", "A14", "A30", "A31"],
+  },
+  {
+    id: "decide",
+    title: "결정하기 · 처리하기",
+    description: "검토 결과에 따라 승인·보류·반려하거나 후속 조치를 정하는 행위",
+    actionIds: ["A08", "A16", "A17", "A22", "A23", "A32", "A33", "A36", "A37", "A38"],
+  },
+  {
+    id: "change",
+    title: "고치기 · 바꾸기",
+    description: "기존 내용을 수정하거나 새로운 상태로 변경하는 행위",
+    actionIds: ["A24", "A25", "A26", "A43"],
+  },
+  {
+    id: "organize",
+    title: "나누기 · 합치기 · 연결하기",
+    description: "구조나 관계를 정리하고 관리하거나 관할을 옮기는 행위",
+    actionIds: ["A18", "A19", "A20", "A21", "A34", "A35", "A48"],
+  },
+  {
+    id: "communicate",
+    title: "보내기 · 알리기 · 공유하기",
+    description: "문서·물품·정보를 다른 사람이나 기관에 전달하는 행위",
+    actionIds: ["A27", "A28", "A29", "A46", "A47", "A51", "A52"],
+  },
+  {
+    id: "exception",
+    title: "선택하기 어려움",
+    description: "제시된 행위만으로 상황을 충분히 표현하기 어려운 경우",
+    actionIds: ["UNDECIDABLE"],
+  },
+];
+
+const rawActionById = new Map(rawActionOptions.map((action) => [action.id, action]));
+const actionGroups = ACTION_GROUPS.map((group) => ({
+  ...group,
+  actions: group.actionIds
+    .map((actionId) => rawActionById.get(actionId))
+    .filter((action): action is ActionOption => Boolean(action)),
+}));
+const actionOptions = actionGroups.flatMap((group) => group.actions);
 
 const actionById = new Map(actionOptions.map((action) => [action.id, action]));
-const sourceActionById = new Map(testData.actions.map((action) => [action.id, action]));
 
 function shuffle<T>(items: T[]): T[] {
   const result = [...items];
@@ -98,58 +170,62 @@ export function TestApp() {
   const [screen, setScreen] = useState<Screen>("intro");
   const [session, setSession] = useState<Session | null>(null);
   const [savedSession, setSavedSession] = useState<Session | null>(null);
-  const [pickerOpen, setPickerOpen] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
   const [activeOptionIndex, setActiveOptionIndex] = useState(0);
   const [notice, setNotice] = useState("");
   const searchInputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
-    try {
-      const raw = window.localStorage.getItem(STORAGE_KEY);
-      if (!raw) return;
-      const parsed = JSON.parse(raw) as Session;
-      if (parsed.version === testData.meta.version && parsed.order.length > 0) {
-        setSavedSession(normalizeSession(parsed));
+    const timeoutId = window.setTimeout(() => {
+      try {
+        const raw = window.localStorage.getItem(STORAGE_KEY);
+        if (!raw) return;
+        const parsed = JSON.parse(raw) as Session;
+        if (parsed.version === testData.meta.version && parsed.order.length > 0) {
+          setSavedSession(normalizeSession(parsed));
+        }
+      } catch {
+        window.localStorage.removeItem(STORAGE_KEY);
       }
-    } catch {
-      window.localStorage.removeItem(STORAGE_KEY);
-    }
+    }, 0);
+
+    return () => window.clearTimeout(timeoutId);
   }, []);
 
   useEffect(() => {
     if (!session) return;
     window.localStorage.setItem(STORAGE_KEY, JSON.stringify(session));
-    setSavedSession(session);
   }, [session]);
 
-  useEffect(() => {
-    if (!pickerOpen) return;
-    setSearchTerm("");
-    setActiveOptionIndex(0);
-    window.setTimeout(() => searchInputRef.current?.focus(), 0);
-  }, [pickerOpen]);
-
   const normalizedSearch = searchTerm.trim().normalize("NFKC").toLocaleLowerCase("ko");
-  const filteredOptions = useMemo(() => {
-    if (!normalizedSearch) return actionOptions;
-    return actionOptions.filter((action) => {
-      const searchable = [
-        action.name,
-        action.definition,
-        ...action.subjects,
-        ...action.keyTerms,
-      ]
-        .join(" ")
-        .normalize("NFKC")
-        .toLocaleLowerCase("ko");
-      return searchable.includes(normalizedSearch);
-    });
+  const filteredGroups = useMemo(() => {
+    return actionGroups
+      .map((group) => ({
+        ...group,
+        actions: normalizedSearch
+          ? group.actions.filter((action) => {
+              const searchable = [
+                action.name,
+                action.definition,
+                ...action.subjects,
+                ...action.keyTerms,
+              ]
+                .join(" ")
+                .normalize("NFKC")
+                .toLocaleLowerCase("ko");
+              return searchable.includes(normalizedSearch);
+            })
+          : group.actions,
+      }))
+      .filter((group) => group.actions.length > 0);
   }, [normalizedSearch]);
-
-  useEffect(() => {
-    setActiveOptionIndex(0);
-  }, [normalizedSearch]);
+  const filteredOptions = useMemo(
+    () => filteredGroups.flatMap((group) => group.actions),
+    [filteredGroups],
+  );
+  const filteredOptionIndexById = new Map(
+    filteredOptions.map((action, index) => [action.id, index]),
+  );
 
   const currentQuestion = session
     ? questionById.get(session.order[session.currentIndex])
@@ -162,6 +238,7 @@ export function TestApp() {
   const selectedAction = currentResponse?.actionId
     ? actionById.get(currentResponse.actionId)
     : undefined;
+  const resumableSession = session ?? savedSession;
 
   const results = useMemo(() => {
     if (!session) return null;
@@ -214,14 +291,18 @@ export function TestApp() {
       currentIndex: 0,
     };
     setSession(nextSession);
+    setSearchTerm("");
+    setActiveOptionIndex(0);
     setScreen("test");
     setNotice("");
   }
 
   function continueSavedTest() {
-    if (!savedSession) return;
-    setSession(savedSession);
-    setScreen(savedSession.submittedAt ? "result" : "test");
+    if (!resumableSession) return;
+    setSession(resumableSession);
+    setSearchTerm("");
+    setActiveOptionIndex(0);
+    setScreen(resumableSession.submittedAt ? "result" : "test");
   }
 
   function updateCurrentResponse(patch: Partial<ResponseValue>) {
@@ -242,7 +323,6 @@ export function TestApp() {
 
   function chooseAction(action: ActionOption) {
     updateCurrentResponse({ actionId: action.id });
-    setPickerOpen(false);
     setNotice("");
   }
 
@@ -252,6 +332,8 @@ export function TestApp() {
       ...session,
       currentIndex: Math.max(0, Math.min(index, session.order.length - 1)),
     });
+    setSearchTerm("");
+    setActiveOptionIndex(0);
     setNotice("");
     window.scrollTo({ top: 0, behavior: "smooth" });
   }
@@ -282,6 +364,8 @@ export function TestApp() {
     window.localStorage.removeItem(STORAGE_KEY);
     setSession(null);
     setSavedSession(null);
+    setSearchTerm("");
+    setActiveOptionIndex(0);
     setScreen("intro");
     setNotice("");
   }
@@ -336,9 +420,10 @@ export function TestApp() {
       setActiveOptionIndex((index) => Math.max(index - 1, 0));
     } else if (event.key === "Enter") {
       event.preventDefault();
-      chooseAction(filteredOptions[activeOptionIndex]);
+      chooseAction(filteredOptions[Math.min(activeOptionIndex, filteredOptions.length - 1)]);
     } else if (event.key === "Escape") {
-      setPickerOpen(false);
+      setSearchTerm("");
+      setActiveOptionIndex(0);
     }
   }
 
@@ -377,18 +462,18 @@ export function TestApp() {
               </button>
             </div>
 
-            {savedSession && (
+            {resumableSession && (
               <div className="resume-card">
                 <div>
-                  <strong>{savedSession.submittedAt ? "완료한 결과가 있습니다" : "진행 중인 테스트가 있습니다"}</strong>
+                  <strong>{resumableSession.submittedAt ? "완료한 결과가 있습니다" : "진행 중인 테스트가 있습니다"}</strong>
                   <span>
-                    {savedSession.mode === "full" ? "전체 테스트" : "빠른 체험"} ·{" "}
-                    {savedSession.order.filter((id) => isComplete(savedSession.responses[id])).length}/
-                    {savedSession.order.length} 응답
+                    {resumableSession.mode === "full" ? "전체 테스트" : "빠른 체험"} ·{" "}
+                    {resumableSession.order.filter((id) => isComplete(resumableSession.responses[id])).length}/
+                    {resumableSession.order.length} 응답
                   </span>
                 </div>
                 <button className="text-button" onClick={continueSavedTest}>
-                  {savedSession.submittedAt ? "결과 보기" : "이어서 하기"} →
+                  {resumableSession.submittedAt ? "결과 보기" : "이어서 하기"} →
                 </button>
               </div>
             )}
@@ -445,7 +530,16 @@ export function TestApp() {
       <main className="result-shell">
         <header className="compact-header">
           <div className="brand"><span className="brand-mark">기준</span><span>Definition Check</span></div>
-          <button className="text-button" onClick={() => setScreen("test")}>내 응답 다시 보기</button>
+          <button
+            className="text-button"
+            onClick={() => {
+              setSearchTerm("");
+              setActiveOptionIndex(0);
+              setScreen("test");
+            }}
+          >
+            내 응답 다시 보기
+          </button>
         </header>
 
         <section className={`result-hero ${results.passed ? "is-passed" : ""}`}>
@@ -579,26 +673,105 @@ export function TestApp() {
 
         <section className="question-area" aria-labelledby="question-title">
           {notice && <div className="notice" role="status">{notice}</div>}
-          <div className="question-meta">
-            <span>QUESTION {String(session.currentIndex + 1).padStart(3, "0")}</span>
-            <span>{currentQuestion.id}</span>
-          </div>
-          <h1 id="question-title">{currentQuestion.scenario}</h1>
-          <p className="question-prompt">이 상황을 가장 잘 표현하는 행위 하나를 선택하세요.</p>
+          <div className="question-stage">
+            <section className="case-card" aria-label="현재 문제 사례">
+              <div className="question-meta">
+                <span>QUESTION {String(session.currentIndex + 1).padStart(3, "0")}</span>
+                <span>{currentQuestion.id}</span>
+              </div>
+              <h1 id="question-title">{currentQuestion.scenario}</h1>
+              <p className="question-prompt">이 상황을 가장 잘 표현하는 행위 하나를 선택하세요.</p>
+              <div className="case-tip">
+                <span aria-hidden="true" />
+                사례의 결과가 아니라, 실제로 수행된 행위를 기준으로 판단해 보세요.
+              </div>
+            </section>
 
-          <div className="field-group">
-            <label>행위 선택</label>
-            <button
-              className={`action-picker-trigger ${selectedAction ? "has-value" : ""}`}
-              onClick={() => setPickerOpen(true)}
-              aria-haspopup="dialog"
-            >
-              {selectedAction ? (
-                <><span><strong>{selectedAction.name}</strong><small>{selectedAction.definition}</small></span><b>변경</b></>
-              ) : (
-                <><span><strong>행위명 또는 정의로 검색</strong><small>전체 54개 행위와 판정불가 중에서 선택</small></span><b>검색</b></>
-              )}
-            </button>
+            <section className="action-finder-panel" aria-labelledby="action-finder-title">
+              <header className="action-finder-header">
+                <div>
+                  <p className="eyebrow">ACTION FINDER</p>
+                  <h2 id="action-finder-title">행위를 선택하세요</h2>
+                </div>
+                <div className={`selection-pill ${selectedAction ? "has-value" : ""}`} aria-live="polite">
+                  <span>현재 선택</span>
+                  <strong>{selectedAction?.name ?? "선택 전"}</strong>
+                </div>
+              </header>
+
+              <p className="finder-guide">
+                비슷한 의미끼리 묶어 두었습니다. 이 묶음은 찾기 편의를 위한 분류이며 행위의 공식 계층은 아닙니다.
+              </p>
+
+              <div className="inline-search">
+                <span aria-hidden="true">⌕</span>
+                <input
+                  ref={searchInputRef}
+                  value={searchTerm}
+                  onChange={(event) => {
+                    setSearchTerm(event.target.value);
+                    setActiveOptionIndex(0);
+                  }}
+                  onKeyDown={handlePickerKeyDown}
+                  placeholder="행위명·정의·핵심어로 검색"
+                  aria-label="행위 검색"
+                />
+                {searchTerm && (
+                  <button
+                    onClick={() => {
+                      setSearchTerm("");
+                      setActiveOptionIndex(0);
+                      searchInputRef.current?.focus();
+                    }}
+                    aria-label="검색어 지우기"
+                  >
+                    지우기
+                  </button>
+                )}
+              </div>
+
+              <div className="finder-summary">
+                <span>{filteredOptions.length}개 행위</span>
+                <span>{normalizedSearch ? `${filteredGroups.length}개 묶음에서 검색됨` : `${filteredGroups.length}개 의미 묶음`}</span>
+              </div>
+
+              <div className="grouped-option-list" role="listbox" aria-label="의미별 행위 목록">
+                {filteredGroups.length ? filteredGroups.map((group, groupIndex) => (
+                  <section className="action-group" data-group={group.id} key={group.id} role="group" aria-labelledby={`group-${group.id}`}>
+                    <header className="action-group-header">
+                      <span>{String(groupIndex + 1).padStart(2, "0")}</span>
+                      <div>
+                        <h3 id={`group-${group.id}`}>{group.title}</h3>
+                        <p>{group.description}</p>
+                      </div>
+                      <b>{group.actions.length}</b>
+                    </header>
+                    <div className="action-group-options">
+                      {group.actions.map((action) => {
+                        const optionIndex = filteredOptionIndexById.get(action.id) ?? 0;
+                        const isSelected = currentResponse?.actionId === action.id;
+                        return (
+                          <button
+                            key={action.id}
+                            className={`action-option ${optionIndex === activeOptionIndex ? "is-active" : ""} ${isSelected ? "is-selected" : ""}`}
+                            onMouseEnter={() => setActiveOptionIndex(optionIndex)}
+                            onClick={() => chooseAction(action)}
+                            role="option"
+                            aria-selected={isSelected}
+                          >
+                            <span className="option-name">{action.name}</span>
+                            <span className="option-definition">{action.definition || "정의가 제공되지 않았습니다."}</span>
+                            <span className="option-choice" aria-hidden="true">{isSelected ? "✓" : "선택"}</span>
+                          </button>
+                        );
+                      })}
+                    </div>
+                  </section>
+                )) : (
+                  <div className="empty-options"><strong>검색 결과가 없습니다.</strong><span>다른 단어나 더 짧은 표현으로 검색해보세요.</span></div>
+                )}
+              </div>
+            </section>
           </div>
 
           {session.mode === "full" && (
@@ -643,61 +816,6 @@ export function TestApp() {
         </section>
       </div>
 
-      {pickerOpen && (
-        <div className="picker-backdrop" onMouseDown={(event) => { if (event.target === event.currentTarget) setPickerOpen(false); }}>
-          <div className="picker-workspace">
-            <aside className="picker-case-panel" aria-label="현재 문제 사례">
-              <div className="picker-case-meta">
-                <span>현재 사례</span>
-                <span>{session.currentIndex + 1} / {session.order.length}</span>
-              </div>
-              <p>{currentQuestion.scenario}</p>
-              <div className="picker-case-hint">
-                <span />
-                사례의 결과가 아니라, 수행된 행위 자체를 기준으로 선택하세요.
-              </div>
-            </aside>
-
-            <section className="picker-dialog" role="dialog" aria-modal="true" aria-labelledby="picker-title">
-              <header className="picker-header">
-                <div><p className="eyebrow">ACTION FINDER</p><h2 id="picker-title">가장 적합한 행위를 찾아보세요</h2></div>
-                <button className="close-button" onClick={() => setPickerOpen(false)} aria-label="행위 선택창 닫기">×</button>
-              </header>
-              <div className="search-wrap">
-                <span aria-hidden="true">⌕</span>
-                <input
-                  ref={searchInputRef}
-                  value={searchTerm}
-                  onChange={(event) => setSearchTerm(event.target.value)}
-                  onKeyDown={handlePickerKeyDown}
-                  placeholder="예: 받음, 기록, 판단, 상태 변경"
-                  aria-label="행위 검색"
-                />
-                <kbd>ESC</kbd>
-              </div>
-              <div className="picker-summary"><span>{filteredOptions.length}개 결과</span><span>↑ ↓ 이동 · Enter 선택</span></div>
-              <div className="option-list" role="listbox" aria-label="행위 검색 결과">
-                {filteredOptions.length ? filteredOptions.map((action, index) => (
-                  <button
-                    key={action.id}
-                    className={`${index === activeOptionIndex ? "is-active" : ""} ${currentResponse?.actionId === action.id ? "is-selected" : ""}`}
-                    onMouseEnter={() => setActiveOptionIndex(index)}
-                    onClick={() => chooseAction(action)}
-                    role="option"
-                    aria-selected={currentResponse?.actionId === action.id}
-                  >
-                    <span className="option-name">{action.name}</span>
-                    <span className="option-definition">{action.definition || "정의가 제공되지 않았습니다."}</span>
-                    <span className="option-status">{action.criteriaStatus}</span>
-                  </button>
-                )) : (
-                  <div className="empty-options"><strong>검색 결과가 없습니다.</strong><span>다른 단어나 더 짧은 표현으로 검색해보세요.</span></div>
-                )}
-              </div>
-            </section>
-          </div>
-        </div>
-      )}
     </main>
   );
 }
