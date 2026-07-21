@@ -32,7 +32,8 @@ test("renders the definition test introduction", async () => {
   assert.match(html, /<title>행위 정의 판별 테스트<\/title>/i);
   assert.match(html, /이 상황을 가장 잘 표현하는/);
   assert.match(html, /빠른 체험 시작/);
-  assert.match(html, /전체 테스트 시작/);
+  assert.match(html, /표준 테스트 시작/);
+  assert.match(html, /정밀 테스트 시작/);
   assert.match(html, />54</);
   assert.match(html, />216</);
   assert.doesNotMatch(html, /codex-preview|Your site is taking shape|react-loading-skeleton/i);

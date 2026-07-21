@@ -3,7 +3,7 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import testData from "./data/test-data.json";
 
-type TestMode = "preview" | "full";
+type TestMode = "preview" | "standard" | "full";
 type Screen = "intro" | "test" | "result";
 
 type ResponseValue = {
@@ -172,6 +172,12 @@ function percent(value: number) {
   return `${Math.round(value * 100)}%`;
 }
 
+function modeLabel(mode: TestMode) {
+  if (mode === "preview") return "빠른 체험";
+  if (mode === "standard") return "표준 테스트";
+  return "정밀 테스트";
+}
+
 function escapeCsv(value: string | number) {
   return `"${String(value).replaceAll('"', '""')}"`;
 }
@@ -289,7 +295,7 @@ export function TestApp() {
       uncertainCount,
       byAction,
       passed:
-        session.mode === "full" &&
+        session.mode !== "preview" &&
         rows.every((row) => isComplete(row.response)) &&
         correctCount / rows.length >= testData.meta.passThreshold,
     };
@@ -297,7 +303,17 @@ export function TestApp() {
 
   function startTest(mode: TestMode) {
     const shuffledIds = shuffle(testData.questions.map((question) => question.id));
-    const order = mode === "preview" ? shuffledIds.slice(0, PREVIEW_QUESTION_COUNT) : shuffledIds;
+    const standardIds = testData.actions.flatMap((action) => {
+      const candidateIds = testData.questions
+        .filter((question) => question.sourceActionId === action.id)
+        .map((question) => question.id);
+      return candidateIds.length ? [shuffle(candidateIds)[0]] : [];
+    });
+    const order = mode === "preview"
+      ? shuffledIds.slice(0, PREVIEW_QUESTION_COUNT)
+      : mode === "standard"
+        ? shuffle(standardIds)
+        : shuffledIds;
     const nextSession: Session = {
       version: testData.meta.version,
       mode,
@@ -471,13 +487,17 @@ export function TestApp() {
             </p>
 
             <div className="hero-actions">
-              <button className="button button-primary" onClick={() => startTest("preview")}>
+              <button className="button button-primary" onClick={() => startTest("standard")}>
+                표준 테스트 시작
+                <span>54문항 · 약 30분</span>
+              </button>
+              <button className="button button-secondary" onClick={() => startTest("preview")}>
                 빠른 체험 시작
-                <span>12문항</span>
+                <span>12문항 · 약 5분</span>
               </button>
               <button className="button button-secondary" onClick={() => startTest("full")}>
-                전체 테스트 시작
-                <span>216문항</span>
+                정밀 테스트 시작
+                <span>216문항 · 90분 이상</span>
               </button>
             </div>
 
@@ -486,7 +506,7 @@ export function TestApp() {
                 <div>
                   <strong>{resumableSession.submittedAt ? "완료한 결과가 있습니다" : "진행 중인 테스트가 있습니다"}</strong>
                   <span>
-                    {resumableSession.mode === "full" ? "전체 테스트" : "빠른 체험"} ·{" "}
+                    {modeLabel(resumableSession.mode)} ·{" "}
                     {resumableSession.order.filter((id) => isComplete(resumableSession.responses[id])).length}/
                     {resumableSession.order.length} 응답
                   </span>
@@ -510,7 +530,7 @@ export function TestApp() {
             </div>
             <div className="stat-row">
               <strong>{percent(testData.meta.passThreshold)}</strong>
-              <span>전체 테스트 통과 기준</span>
+              <span>표준·정밀 통과 기준</span>
             </div>
             <div className="panel-note">
               <span className="note-dot" />
@@ -545,6 +565,7 @@ export function TestApp() {
     const wrongRows = results.rows
       .filter((row) => !row.correct)
       .sort((a, b) => Number(Boolean(b.response?.uncertain)) - Number(Boolean(a.response?.uncertain)));
+    const restartMode: TestMode = session.mode === "preview" ? "standard" : session.mode;
     return (
       <main className="result-shell">
         <header className="compact-header">
@@ -563,7 +584,7 @@ export function TestApp() {
         </header>
 
         <section className={`result-hero ${results.passed ? "is-passed" : ""}`}>
-          <p className="eyebrow">{session.mode === "full" ? "전체 테스트 결과" : "빠른 체험 결과"}</p>
+          <p className="eyebrow">{modeLabel(session.mode)} 결과</p>
           <div className="score-line">
             <strong>{percent(results.accuracy)}</strong>
             <span>{results.correctCount} / {session.order.length} 정답</span>
@@ -577,8 +598,10 @@ export function TestApp() {
           </h1>
           <p>
             {session.mode === "preview"
-              ? "빠른 체험 점수는 참고용입니다. 전체 테스트를 완료해야 단계 진입 기준을 판정합니다."
-              : `통과 기준은 ${percent(testData.meta.passThreshold)}이며, 헷갈렸다고 표시한 오답부터 검토하는 것을 권장합니다.`}
+              ? "빠른 체험 점수는 참고용입니다. 약 30분의 표준 테스트에서 단계 진입 기준을 판정할 수 있습니다."
+              : session.mode === "standard"
+                ? `각 행위에서 사례 1개씩 출제했습니다. 통과 기준은 ${percent(testData.meta.passThreshold)}이며, 정밀한 일관성 검증은 216문항 정밀 테스트에서 확인할 수 있습니다.`
+                : `통과 기준은 ${percent(testData.meta.passThreshold)}이며, 헷갈렸다고 표시한 오답부터 검토하는 것을 권장합니다.`}
           </p>
         </section>
 
@@ -586,8 +609,8 @@ export function TestApp() {
           <article><span>전체 정확도</span><strong>{percent(results.accuracy)}</strong></article>
           <article><span>오답 문항</span><strong>{wrongRows.length}</strong></article>
           <article>
-            <span>{session.mode === "preview" ? "응답 완료" : "헷갈린 문항"}</span>
-            <strong>{session.mode === "preview" ? `${answeredCount}/${session.order.length}` : results.uncertainCount}</strong>
+            <span>{session.mode === "full" ? "헷갈린 문항" : "응답 완료"}</span>
+            <strong>{session.mode === "full" ? results.uncertainCount : `${answeredCount}/${session.order.length}`}</strong>
           </article>
           <article><span>판정</span><strong>{session.mode === "preview" ? "참고용" : results.passed ? "통과" : "보완 필요"}</strong></article>
         </section>
@@ -596,7 +619,7 @@ export function TestApp() {
           <section className="result-card" aria-labelledby="action-result-title">
             <div className="section-heading">
               <div><p className="eyebrow">BY ACTION</p><h2 id="action-result-title">행위별 정확도</h2></div>
-              <span>낮은 정확도 순</span>
+              <span>{session.mode === "standard" ? "행위당 1문항" : "낮은 정확도 순"}</span>
             </div>
             <div className="action-result-list">
               {results.byAction.map((action) => (
@@ -644,7 +667,9 @@ export function TestApp() {
         </div>
 
         <section className="result-actions">
-          <button className="button button-primary" onClick={() => startTest("full")}>전체 테스트 새로 시작</button>
+          <button className="button button-primary" onClick={() => startTest(restartMode)}>
+            {session.mode === "preview" ? "표준 테스트 시작" : `${modeLabel(session.mode)} 새로 시작`}
+          </button>
           <button className="button button-secondary" onClick={downloadResults}>결과 CSV 받기</button>
           <button className="text-button danger" onClick={resetTest}>저장된 기록 지우기</button>
         </section>
@@ -657,7 +682,7 @@ export function TestApp() {
       <header className="test-header">
         <div className="brand"><span className="brand-mark">기준</span><span>Definition Check</span></div>
         <div className="header-progress">
-          <span>{session.mode === "full" ? "전체 테스트" : "빠른 체험"}</span>
+          <span>{modeLabel(session.mode)}</span>
           <strong>{answeredCount} / {session.order.length} 응답</strong>
         </div>
         <button className="text-button" onClick={() => setScreen("intro")}>나가기</button>
