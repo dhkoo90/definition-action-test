@@ -33,6 +33,7 @@ type ActionOption = {
 type ActionGroupDefinition = {
   id: string;
   title: string;
+  shortTitle: string;
   description: string;
   actionIds: string[];
 };
@@ -65,54 +66,63 @@ const ACTION_GROUPS: ActionGroupDefinition[] = [
   {
     id: "understand",
     title: "알아보기 · 구별하기",
+    shortTitle: "인지·판단",
     description: "사실이나 대상을 알고, 구별하고, 판정을 내리는 행위",
     actionIds: ["A01", "A04", "A05", "A06", "A09"],
   },
   {
     id: "examine",
     title: "검사하기 · 분석하기",
+    shortTitle: "검사·분석",
     description: "상태나 성질을 살피고, 시험하고, 평가하는 행위",
     actionIds: ["A02", "A03", "A15", "A40", "A41", "A42", "A44", "A45", "A49", "A50"],
   },
   {
     id: "collect",
     title: "요청하기 · 받기 · 모으기",
+    shortTitle: "요청·수집",
     description: "요청을 내거나 받아들이고, 필요한 대상을 찾아 모으는 행위",
     actionIds: ["A07", "A11", "A12", "A39", "A53", "A54"],
   },
   {
     id: "record",
     title: "만들기 · 기록하기 · 보관하기",
+    shortTitle: "생성·보관",
     description: "대상을 만들고 시스템에 남기거나 간직하는 행위",
     actionIds: ["A10", "A13", "A14", "A30", "A31"],
   },
   {
     id: "decide",
     title: "결정하기 · 처리하기",
+    shortTitle: "결정·처리",
     description: "검토 결과에 따라 승인·보류·반려하거나 후속 조치를 정하는 행위",
     actionIds: ["A08", "A16", "A17", "A22", "A23", "A32", "A33", "A36", "A37", "A38"],
   },
   {
     id: "change",
     title: "고치기 · 바꾸기",
+    shortTitle: "수정·변경",
     description: "기존 내용을 수정하거나 새로운 상태로 변경하는 행위",
     actionIds: ["A24", "A25", "A26", "A43"],
   },
   {
     id: "organize",
     title: "나누기 · 합치기 · 연결하기",
+    shortTitle: "구조·연결",
     description: "구조나 관계를 정리하고 관리하거나 관할을 옮기는 행위",
     actionIds: ["A18", "A19", "A20", "A21", "A34", "A35", "A48"],
   },
   {
     id: "communicate",
     title: "보내기 · 알리기 · 공유하기",
+    shortTitle: "전달·공유",
     description: "문서·물품·정보를 다른 사람이나 기관에 전달하는 행위",
     actionIds: ["A27", "A28", "A29", "A46", "A47", "A51", "A52"],
   },
   {
     id: "exception",
     title: "선택하기 어려움",
+    shortTitle: "판정불가",
     description: "제시된 행위만으로 상황을 충분히 표현하기 어려운 경우",
     actionIds: ["UNDECIDABLE"],
   },
@@ -172,6 +182,8 @@ export function TestApp() {
   const [savedSession, setSavedSession] = useState<Session | null>(null);
   const [searchTerm, setSearchTerm] = useState("");
   const [activeOptionIndex, setActiveOptionIndex] = useState(0);
+  const [mobileGroupId, setMobileGroupId] = useState(ACTION_GROUPS[0].id);
+  const [mobileMemoOpen, setMobileMemoOpen] = useState(false);
   const [notice, setNotice] = useState("");
   const searchInputRef = useRef<HTMLInputElement>(null);
 
@@ -226,6 +238,9 @@ export function TestApp() {
   const filteredOptionIndexById = new Map(
     filteredOptions.map((action, index) => [action.id, index]),
   );
+  const visibleMobileGroupId = filteredGroups.some((group) => group.id === mobileGroupId)
+    ? mobileGroupId
+    : filteredGroups[0]?.id;
 
   const currentQuestion = session
     ? questionById.get(session.order[session.currentIndex])
@@ -293,6 +308,7 @@ export function TestApp() {
     setSession(nextSession);
     setSearchTerm("");
     setActiveOptionIndex(0);
+    setMobileMemoOpen(false);
     setScreen("test");
     setNotice("");
   }
@@ -302,6 +318,7 @@ export function TestApp() {
     setSession(resumableSession);
     setSearchTerm("");
     setActiveOptionIndex(0);
+    setMobileMemoOpen(false);
     setScreen(resumableSession.submittedAt ? "result" : "test");
   }
 
@@ -334,6 +351,7 @@ export function TestApp() {
     });
     setSearchTerm("");
     setActiveOptionIndex(0);
+    setMobileMemoOpen(false);
     setNotice("");
     window.scrollTo({ top: 0, behavior: "smooth" });
   }
@@ -366,6 +384,7 @@ export function TestApp() {
     setSavedSession(null);
     setSearchTerm("");
     setActiveOptionIndex(0);
+    setMobileMemoOpen(false);
     setScreen("intro");
     setNotice("");
   }
@@ -535,6 +554,7 @@ export function TestApp() {
             onClick={() => {
               setSearchTerm("");
               setActiveOptionIndex(0);
+              setMobileMemoOpen(false);
               setScreen("test");
             }}
           >
@@ -736,9 +756,29 @@ export function TestApp() {
                 <span>{normalizedSearch ? `${filteredGroups.length}개 묶음에서 검색됨` : `${filteredGroups.length}개 의미 묶음`}</span>
               </div>
 
+              <nav className="mobile-group-nav" aria-label="의미 묶음 바로가기">
+                {filteredGroups.map((group) => (
+                  <button
+                    key={group.id}
+                    className={group.id === visibleMobileGroupId ? "is-active" : ""}
+                    onClick={() => setMobileGroupId(group.id)}
+                    aria-pressed={group.id === visibleMobileGroupId}
+                  >
+                    <span>{group.shortTitle}</span>
+                    <b>{group.actions.length}</b>
+                  </button>
+                ))}
+              </nav>
+
               <div className="grouped-option-list" role="listbox" aria-label="의미별 행위 목록">
                 {filteredGroups.length ? filteredGroups.map((group, groupIndex) => (
-                  <section className="action-group" data-group={group.id} key={group.id} role="group" aria-labelledby={`group-${group.id}`}>
+                  <section
+                    className={`action-group ${group.id === visibleMobileGroupId ? "is-mobile-active" : ""}`}
+                    data-group={group.id}
+                    key={group.id}
+                    role="group"
+                    aria-labelledby={`group-${group.id}`}
+                  >
                     <header className="action-group-header">
                       <span>{String(groupIndex + 1).padStart(2, "0")}</span>
                       <div>
@@ -791,7 +831,7 @@ export function TestApp() {
                   </div>
                 )}
 
-                <div className="field-group memo-field">
+                <div className={`field-group memo-field ${mobileMemoOpen ? "is-mobile-open" : ""}`}>
                   <label htmlFor="memo">판단 메모 <span>선택 사항</span></label>
                   <textarea
                     id="memo"
@@ -804,6 +844,14 @@ export function TestApp() {
 
                 <nav className="question-navigation" aria-label="문항 이동">
                   <button className="button button-secondary" onClick={() => goToQuestion(session.currentIndex - 1)} disabled={session.currentIndex === 0}>← 이전</button>
+                  <button
+                    className={`mobile-memo-toggle ${currentResponse?.note ? "has-value" : ""}`}
+                    onClick={() => setMobileMemoOpen((isOpen) => !isOpen)}
+                    aria-expanded={mobileMemoOpen}
+                    aria-controls="memo"
+                  >
+                    {currentResponse?.note ? "메모 ✓" : "메모"}
+                  </button>
                   {session.currentIndex < session.order.length - 1 ? (
                     <button className="button button-primary" onClick={() => goToQuestion(session.currentIndex + 1)} disabled={!selectedAction}>다음 문항 →</button>
                   ) : (
