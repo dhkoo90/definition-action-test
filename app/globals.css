@@ -1239,6 +1239,53 @@ a:focus-visible {
   padding-bottom: 80px;
 }
 
+@media (min-width: 1201px) {
+  .test-layout {
+    padding-top: 24px;
+  }
+
+  .case-card,
+  .action-finder-panel {
+    height: clamp(360px, calc(100dvh - 460px), 600px);
+    min-height: 0;
+  }
+
+  .uncertainty-field {
+    margin-top: 12px;
+  }
+
+  .uncertainty-toggle {
+    padding: 10px 14px;
+  }
+
+  .memo-field {
+    margin-top: 14px;
+  }
+
+  .memo-field > label {
+    margin-bottom: 6px;
+  }
+
+  .memo-field textarea {
+    height: 68px;
+    min-height: 56px;
+    padding: 10px 14px;
+  }
+
+  .question-navigation {
+    margin-top: 16px;
+    padding-top: 14px;
+  }
+
+  .question-navigation .button {
+    min-height: 48px;
+  }
+
+  .submit-hint {
+    margin-top: 6px;
+  }
+}
+
 @media (max-width: 1200px) {
   .test-layout {
     grid-template-columns: 1fr;
