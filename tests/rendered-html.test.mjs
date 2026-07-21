@@ -34,7 +34,8 @@ test("renders the definition test introduction", async () => {
   assert.match(html, /빠른 체험 시작/);
   assert.match(html, /표준 테스트 시작/);
   assert.match(html, /정밀 테스트 시작/);
+  assert.match(html, /확정판 · v1\.0\.0/);
   assert.match(html, />54</);
   assert.match(html, />216</);
-  assert.doesNotMatch(html, /codex-preview|Your site is taking shape|react-loading-skeleton/i);
+  assert.doesNotMatch(html, /공개 초안|codex-preview|Your site is taking shape|react-loading-skeleton/i);
 });

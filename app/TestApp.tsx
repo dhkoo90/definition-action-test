@@ -39,6 +39,7 @@ type ActionGroupDefinition = {
 };
 
 const STORAGE_KEY = `definition-action-test:${testData.meta.version}`;
+const LEGACY_STORAGE_KEYS = ["definition-action-test:2026-07-20-draft-1"];
 const PREVIEW_QUESTION_COUNT = 12;
 
 const questionById = new Map(testData.questions.map((question) => [question.id, question]));
@@ -196,14 +197,20 @@ export function TestApp() {
   useEffect(() => {
     const timeoutId = window.setTimeout(() => {
       try {
-        const raw = window.localStorage.getItem(STORAGE_KEY);
+        const sourceKey = [STORAGE_KEY, ...LEGACY_STORAGE_KEYS]
+          .find((key) => window.localStorage.getItem(key));
+        if (!sourceKey) return;
+        const raw = window.localStorage.getItem(sourceKey);
         if (!raw) return;
         const parsed = JSON.parse(raw) as Session;
-        if (parsed.version === testData.meta.version && parsed.order.length > 0) {
-          setSavedSession(normalizeSession(parsed));
-        }
+        if (!parsed.order.length) return;
+        const migratedSession = normalizeSession({ ...parsed, version: testData.meta.version });
+        setSavedSession(migratedSession);
+        window.localStorage.setItem(STORAGE_KEY, JSON.stringify(migratedSession));
+        if (sourceKey !== STORAGE_KEY) window.localStorage.removeItem(sourceKey);
       } catch {
         window.localStorage.removeItem(STORAGE_KEY);
+        LEGACY_STORAGE_KEYS.forEach((key) => window.localStorage.removeItem(key));
       }
     }, 0);
 
@@ -396,6 +403,7 @@ export function TestApp() {
 
   function resetTest() {
     window.localStorage.removeItem(STORAGE_KEY);
+    LEGACY_STORAGE_KEYS.forEach((key) => window.localStorage.removeItem(key));
     setSession(null);
     setSavedSession(null);
     setSearchTerm("");
@@ -470,7 +478,7 @@ export function TestApp() {
             <span className="brand-mark">기준</span>
             <span>Definition Check</span>
           </a>
-          <span className="version-badge">초안 · {testData.meta.version}</span>
+          <span className="version-badge">{`확정판 · v${testData.meta.version}`}</span>
         </header>
 
         <section className="hero" id="top">
@@ -552,7 +560,7 @@ export function TestApp() {
         </section>
 
         <footer className="site-footer">
-          <span>Definition Check · 공개 초안</span>
+          <span>{`Definition Check · v${testData.meta.version} 확정판`}</span>
           <a href="./data/test-data.json" download>테스트 데이터 JSON 받기</a>
         </footer>
       </main>

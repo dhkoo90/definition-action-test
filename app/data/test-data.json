@@ -1,7 +1,7 @@
 {
   "meta": {
     "title": "행위 정의 판별 테스트",
-    "version": "2026-07-20-draft-1",
+    "version": "1.0.0",
     "passThreshold": 0.85,
     "actionCount": 54,
     "questionCount": 216,
