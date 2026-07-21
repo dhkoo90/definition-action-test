@@ -526,15 +526,23 @@ a:focus-visible {
   display: grid;
   grid-template-columns: minmax(300px, 0.78fr) minmax(520px, 1.22fr);
   gap: 20px;
-  align-items: start;
+  align-items: stretch;
+}
+
+.answer-column {
+  display: grid;
+  min-width: 0;
+  min-height: 0;
+  grid-template-rows: minmax(0, 1fr) auto;
+  gap: 12px;
 }
 
 .case-card {
   position: sticky;
   top: 24px;
   display: flex;
-  height: min(720px, calc(100dvh - 120px));
-  min-height: 560px;
+  height: 100%;
+  min-height: 0;
   flex-direction: column;
   padding: 30px;
   border-radius: 20px;
@@ -687,6 +695,49 @@ a:focus-visible {
   border-top: 1px solid var(--line);
 }
 
+.answer-controls {
+  padding: 12px 14px 14px;
+  border: 1px solid #cfd4cf;
+  border-radius: 16px;
+  background: rgba(255, 253, 248, 0.96);
+  box-shadow: 0 12px 30px rgba(23, 33, 28, 0.08);
+}
+
+.answer-controls .uncertainty-field {
+  margin-top: 0;
+}
+
+.answer-controls .uncertainty-toggle {
+  padding: 9px 12px;
+}
+
+.answer-controls .memo-field {
+  margin-top: 10px;
+}
+
+.answer-controls .memo-field > label {
+  margin-bottom: 5px;
+}
+
+.answer-controls .memo-field textarea {
+  height: 54px;
+  min-height: 48px;
+  padding: 8px 12px;
+}
+
+.answer-controls .question-navigation {
+  margin-top: 10px;
+  padding-top: 10px;
+}
+
+.answer-controls .question-navigation .button {
+  min-height: 46px;
+}
+
+.answer-controls .submit-hint {
+  margin-top: 5px;
+}
+
 .submit-hint {
   margin: 12px 0 0;
   color: var(--muted);
@@ -697,8 +748,8 @@ a:focus-visible {
 /* Inline action finder */
 .action-finder-panel {
   display: grid;
-  height: min(720px, calc(100dvh - 120px));
-  min-height: 560px;
+  height: 100%;
+  min-height: 0;
   grid-template-rows: auto auto auto auto minmax(0, 1fr);
   overflow: hidden;
   border: 1px solid #c9d0ca;
@@ -1241,48 +1292,11 @@ a:focus-visible {
 
 @media (min-width: 1201px) {
   .test-layout {
-    padding-top: 24px;
+    padding-top: 18px;
   }
 
-  .case-card,
-  .action-finder-panel {
-    height: clamp(360px, calc(100dvh - 460px), 600px);
-    min-height: 0;
-  }
-
-  .uncertainty-field {
-    margin-top: 12px;
-  }
-
-  .uncertainty-toggle {
-    padding: 10px 14px;
-  }
-
-  .memo-field {
-    margin-top: 14px;
-  }
-
-  .memo-field > label {
-    margin-bottom: 6px;
-  }
-
-  .memo-field textarea {
-    height: 68px;
-    min-height: 56px;
-    padding: 10px 14px;
-  }
-
-  .question-navigation {
-    margin-top: 16px;
-    padding-top: 14px;
-  }
-
-  .question-navigation .button {
-    min-height: 48px;
-  }
-
-  .submit-hint {
-    margin-top: 6px;
+  .question-stage {
+    height: clamp(640px, calc(100dvh - 118px), 900px);
   }
 }
 

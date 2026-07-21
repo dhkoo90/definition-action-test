@@ -687,7 +687,8 @@ export function TestApp() {
               </div>
             </section>
 
-            <section className="action-finder-panel" aria-labelledby="action-finder-title">
+            <div className="answer-column">
+              <section className="action-finder-panel" aria-labelledby="action-finder-title">
               <header className="action-finder-header">
                 <div>
                   <p className="eyebrow">ACTION FINDER</p>
@@ -771,48 +772,51 @@ export function TestApp() {
                   <div className="empty-options"><strong>검색 결과가 없습니다.</strong><span>다른 단어나 더 짧은 표현으로 검색해보세요.</span></div>
                 )}
               </div>
-            </section>
-          </div>
+              </section>
 
-          {session.mode === "full" && (
-            <div className="uncertainty-field">
-              <label className={`uncertainty-toggle ${currentResponse?.uncertain ? "is-selected" : ""}`}>
-                <input
-                  type="checkbox"
-                  checked={Boolean(currentResponse?.uncertain)}
-                  onChange={(event) => updateCurrentResponse({ uncertain: event.target.checked })}
-                />
-                <span>
-                  <strong>헷갈렸음</strong>
-                  <small>선택이 확실하지 않다면 표시해 두세요. 점수에는 영향을 주지 않습니다.</small>
-                </span>
-              </label>
+              <div className="answer-controls">
+                {session.mode === "full" && (
+                  <div className="uncertainty-field">
+                    <label className={`uncertainty-toggle ${currentResponse?.uncertain ? "is-selected" : ""}`}>
+                      <input
+                        type="checkbox"
+                        checked={Boolean(currentResponse?.uncertain)}
+                        onChange={(event) => updateCurrentResponse({ uncertain: event.target.checked })}
+                      />
+                      <span>
+                        <strong>헷갈렸음</strong>
+                        <small>선택이 확실하지 않다면 표시해 두세요. 점수에는 영향을 주지 않습니다.</small>
+                      </span>
+                    </label>
+                  </div>
+                )}
+
+                <div className="field-group memo-field">
+                  <label htmlFor="memo">판단 메모 <span>선택 사항</span></label>
+                  <textarea
+                    id="memo"
+                    value={currentResponse?.note ?? ""}
+                    onChange={(event) => updateCurrentResponse({ note: event.target.value })}
+                    placeholder="헷갈렸던 지점이나 선택 근거를 남겨보세요."
+                    rows={2}
+                  />
+                </div>
+
+                <nav className="question-navigation" aria-label="문항 이동">
+                  <button className="button button-secondary" onClick={() => goToQuestion(session.currentIndex - 1)} disabled={session.currentIndex === 0}>← 이전</button>
+                  {session.currentIndex < session.order.length - 1 ? (
+                    <button className="button button-primary" onClick={() => goToQuestion(session.currentIndex + 1)} disabled={!selectedAction}>다음 문항 →</button>
+                  ) : (
+                    <button className="button button-primary" onClick={submitTest} disabled={!selectedAction}>테스트 제출</button>
+                  )}
+                </nav>
+
+                {session.currentIndex === session.order.length - 1 && answeredCount < session.order.length && (
+                  <p className="submit-hint">제출하려면 남은 {session.order.length - answeredCount}개 문항의 행위를 선택해야 합니다.</p>
+                )}
+              </div>
             </div>
-          )}
-
-          <div className="field-group memo-field">
-            <label htmlFor="memo">판단 메모 <span>선택 사항</span></label>
-            <textarea
-              id="memo"
-              value={currentResponse?.note ?? ""}
-              onChange={(event) => updateCurrentResponse({ note: event.target.value })}
-              placeholder="헷갈렸던 지점이나 선택 근거를 남겨보세요."
-              rows={3}
-            />
           </div>
-
-          <nav className="question-navigation" aria-label="문항 이동">
-            <button className="button button-secondary" onClick={() => goToQuestion(session.currentIndex - 1)} disabled={session.currentIndex === 0}>← 이전</button>
-            {session.currentIndex < session.order.length - 1 ? (
-              <button className="button button-primary" onClick={() => goToQuestion(session.currentIndex + 1)} disabled={!selectedAction}>다음 문항 →</button>
-            ) : (
-              <button className="button button-primary" onClick={submitTest} disabled={!selectedAction}>테스트 제출</button>
-            )}
-          </nav>
-
-          {session.currentIndex === session.order.length - 1 && answeredCount < session.order.length && (
-            <p className="submit-hint">제출하려면 남은 {session.order.length - answeredCount}개 문항의 행위를 선택해야 합니다.</p>
-          )}
         </section>
       </div>
 
